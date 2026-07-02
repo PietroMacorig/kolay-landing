@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="L'unica app italiana per imparare le lingue con un percorso strutturato davvero. Lezioni per livello, flashcard SRS, grammatica e AI.">
+  <title>Kolay — Impara le lingue, finalmente chiaro</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">K &nbsp;Kolay</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lingue.html">Lingue</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="registrati.html">Registrati</a></li>
+  </ul>
+  <a href="https://kolay-ochre.vercel.app" class="btn btn-primary nav-cta" target="_blank">Vai all'app →</a>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a>
+  <a href="lingue.html">Lingue</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="faq.html">FAQ</a>
+  <a href="registrati.html">Registrati</a>
+  <a href="https://kolay-ochre.vercel.app" target="_blank" style="color:var(--accent);font-weight:700">Vai all'app →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <h1 class="hero-title">Kolay.<br>Facile.</h1>
+    <p class="hero-subtitle">L'unica app italiana per imparare le lingue con un percorso strutturato davvero.</p>
+    <div class="hero-ctas">
+      <a href="registrati.html" class="btn btn-primary">Diventa Beta Tester →</a>
+      <a href="https://kolay-ochre.vercel.app" class="hero-link-secondary" target="_blank">o vai direttamente all'app →</a>
+    </div>
+  </div>
+
+  <div class="hero-phone">
+    <div class="iphone">
+      <div class="iphone-notch"></div>
+      <div class="iphone-screen">
+        <img src="assets/screenshot.png" alt="Screenshot app Kolay">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section">
+    <h2 class="section-title">Tutto quello che ti serve, in un posto solo</h2>
+    <p class="section-subtitle">Niente giochini, niente punti inutili. Solo un percorso chiaro per imparare davvero.</p>
+
+    <div class="features-grid">
+
+      <!-- Featured card -->
+      <div class="feat-card-hero">
+        <div class="feat-icon">📚</div>
+        <div>
+          <h3>Lezioni strutturate per livelli e unità</h3>
+          <p>Sai sempre dove sei, cosa hai imparato e cosa ti aspetta. Ogni livello (A1, A2, B1) è diviso in unità con obiettivi chiari. Nessuna confusione, nessun salto nel vuoto — solo un percorso lineare che funziona davvero, a differenza delle app che ti fanno fare punti senza capire nulla.</p>
+        </div>
+      </div>
+
+      <!-- 2x2 grid -->
+      <div class="feat-card">
+        <div class="feat-icon">🃏</div>
+        <div>
+          <h3>Flashcard con ripetizione spaziata</h3>
+          <p>Il sistema decide quando ripassare ogni parola. Tu studi, lui ottimizza i tempi. Zero sprechi, massima ritenzione.</p>
+        </div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">📖</div>
+        <div>
+          <h3>Grammatica sempre a portata</h3>
+          <p>Ogni lezione è collegata alle regole grammaticali. Un tap e trovi la spiegazione completa — senza cercare su Google.</p>
+        </div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">📰</div>
+        <div>
+          <h3>Testi di lettura</h3>
+          <p>Dialoghi reali calibrati sul tuo livello. Tap su qualsiasi frase per vedere la traduzione italiana.</p>
+        </div>
+      </div>
+
+      <div class="feat-card">
+        <div class="feat-icon">✍️</div>
+        <div>
+          <h3>Scrittura con AI</h3>
+          <p>Scrivi frasi libere nella lingua che stai imparando. L'AI le corregge e spiega ogni errore in italiano.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <h2>Stiamo cercando beta tester.</h2>
+  <p>L'app è gratuita durante la fase di test. Mandaci la tua email e ti invitiamo noi.</p>
+  <a href="registrati.html" class="btn btn-white">Richiedi accesso</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-logo">Kolay</span>
+  <div class="footer-links">
+    <a href="#">Privacy Policy</a>
+    <a href="#">Termini di servizio</a>
+  </div>
+  <span class="footer-copy">© 2026 Kolay — Fatto con cura da Pietro Macorig</span>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navDrawer').classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>
