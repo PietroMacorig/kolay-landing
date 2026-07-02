@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Kolay</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">K &nbsp;Kolay</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lingue.html">Lingue</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="registrati.html">Registrati</a></li>
+  </ul>
+  <a href="https://kolay-ochre.vercel.app" class="btn btn-primary nav-cta" target="_blank">Vai all'app →</a>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="lingue.html">Lingue</a>
+  <a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a>
+  <a href="registrati.html">Registrati</a>
+  <a href="https://kolay-ochre.vercel.app" target="_blank" style="color:var(--accent);font-weight:700">Vai all'app →</a>
+</div>
+
+<div class="page-hero">
+  <h1>Domande frequenti</h1>
+  <p>Tutto quello che vuoi sapere su Kolay.</p>
+</div>
+
+<div class="page-body" style="max-width:720px">
+  <div class="faq-list">
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Come funziona l'accesso?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Kolay è in fase beta. Compila il form di registrazione e ti invitiamo noi via email entro pochi giorni. L'accesso è su invito per mantenere la qualità durante il testing.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        È davvero gratuita?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Sì, durante la fase beta l'app è completamente gratuita. Quando lanceremo il piano Pro, chi è entrato in beta manterrà i suoi privilegi — nessuna brutta sorpresa.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Cos'è la ripetizione spaziata (SRS)?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">È un sistema che decide quando ripassare ogni parola in base a quanto la ricordi. Se ricordi bene una parola, la rivedi tra più giorni. Se la dimentichi, la rivedi prima. Così non perdi tempo a ripassare cose che già sai — e non dimentichi quelle difficili.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Devo installare qualcosa?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">No. Kolay è una web app — si apre dal browser, su qualsiasi dispositivo. Da iPhone: apri Safari, vai sull'app e premi "Aggiungi a schermata Home". Si comporta come un'app nativa, senza passare dall'App Store.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Che differenza c'è con Duolingo?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Duolingo è pensato per farti tornare ogni giorno con punti, streak e notifiche. Kolay è pensato per farti imparare davvero: percorso strutturato per livelli (A1→B1), grammatica integrata nelle lezioni, ripetizione spaziata seria. Nessun gamification vuoto.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Posso usarla su iPhone?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Sì. Aprila da Safari, premi il tasto Condividi e poi "Aggiungi a schermata Home". Da quel momento si apre come un'app normale, a schermo intero, senza la barra del browser.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Quando arriveranno altre lingue?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">L'inglese è in lavorazione e arriverà entro il 2026. Puoi lasciare la tua email nel form di registrazione e selezionare "Inglese" — ti avvisiamo noi appena è pronto.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        I miei dati sono al sicuro?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">Usiamo Supabase per l'autenticazione e il salvataggio dei progressi. I tuoi dati non vengono condivisi o venduti a terzi. Una Privacy Policy completa è in arrivo prima del lancio pubblico.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="footer">
+  <span class="footer-logo">Kolay</span>
+  <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Termini di servizio</a></div>
+  <span class="footer-copy">© 2026 Kolay — Fatto con cura da Pietro Macorig</span>
+</footer>
+
+<script>
+  function toggleNav() { document.getElementById('navDrawer').classList.toggle('open'); }
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+</script>
+</body>
+</html>
