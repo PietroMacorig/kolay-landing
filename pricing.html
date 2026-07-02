@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — Kolay</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">K &nbsp;Kolay</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="lingue.html">Lingue</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="registrati.html">Registrati</a></li>
+  </ul>
+  <a href="https://kolay-ochre.vercel.app" class="btn btn-primary nav-cta" target="_blank">Vai all'app →</a>
+  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="nav-drawer" id="navDrawer">
+  <a href="index.html">Home</a><a href="lingue.html">Lingue</a>
+  <a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a>
+  <a href="registrati.html">Registrati</a>
+  <a href="https://kolay-ochre.vercel.app" target="_blank" style="color:var(--accent);font-weight:700">Vai all'app →</a>
+</div>
+
+<div class="page-hero">
+  <h1>Pricing</h1>
+  <p>Semplice e trasparente. Inizia gratis, passa al Pro quando vuoi.</p>
+</div>
+
+<div class="page-body">
+
+  <div class="pricing-banner">
+    🎉 <strong>L'app è attualmente in fase beta e completamente gratuita.</strong> Goditi tutto gratis finché dura. Chi entra in beta ora manterrà i suoi privilegi al lancio del piano Pro.
+  </div>
+
+  <div class="pricing-grid">
+
+    <!-- Free -->
+    <div class="pricing-card">
+      <div class="pricing-plan">Piano Free</div>
+      <div class="pricing-price">Gratis</div>
+      <p style="font-size:0.85rem;margin-bottom:4px">Sempre, per iniziare.</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Prima unità del livello A1</li>
+        <li>Testi di lettura — Unità 1 A1</li>
+        <li>3 messaggi AI al giorno</li>
+        <li>Accesso su richiesta via email</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="registrati.html" class="btn btn-primary" style="width:100%;text-align:center">Richiedi accesso</a>
+      </div>
+    </div>
+
+    <!-- Pro -->
+    <div class="pricing-card pro">
+      <div class="pricing-plan">Piano Pro</div>
+      <div class="pricing-badge-coming">Presto</div>
+      <p style="font-size:0.85rem;margin-bottom:4px">Il prezzo verrà comunicato al lancio.</p>
+      <div class="pricing-divider"></div>
+      <ul class="pricing-features">
+        <li>Tutto il contenuto — A1, A2, B1</li>
+        <li>Tutti i testi di lettura</li>
+        <li>50 messaggi AI a settimana</li>
+        <li>Accesso prioritario alle nuove lingue</li>
+      </ul>
+      <div class="pricing-cta">
+        <a href="registrati.html" class="btn btn-outline" style="width:100%;text-align:center">Avvisami al lancio</a>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer class="footer">
+  <span class="footer-logo">Kolay</span>
+  <div class="footer-links"><a href="#">Privacy Policy</a><a href="#">Termini di servizio</a></div>
+  <span class="footer-copy">© 2026 Kolay — Fatto con cura da Pietro Macorig</span>
+</footer>
+
+<script>function toggleNav(){document.getElementById('navDrawer').classList.toggle('open');}</script>
+</body>
+</html>
