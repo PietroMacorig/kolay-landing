@@ -195,15 +195,12 @@
 
 /* Header labels and price */
 .pricing-th-label {
-  font-size: 0.78rem;
+  font-size: 1.35rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 6px;
-  opacity: 0.85;
+  margin-bottom: 0;
 }
-.pricing-th-pro .pricing-th-label { color: rgba(255,255,255,0.9); }
-.pricing-th-free .pricing-th-label { color: var(--muted); }
+.pricing-th-pro .pricing-th-label { color: #fff; }
+.pricing-th-free .pricing-th-label { color: var(--text); }
 
 .pricing-price {
   font-family: var(--font-serif);
