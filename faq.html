@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FAQ — Kolay</title>
+  <title>Domande frequenti — Kolay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap">
+  <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
 
 <nav class="nav">
-  <a href="index.html" class="nav-logo">K &nbsp;Kolay</a>
+  <a href="index.html" class="nav-logo">Kolay</a>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="lingue.html">Lingue</a></li>
@@ -65,7 +69,9 @@
         Devo installare qualcosa?
         <span class="faq-icon">+</span>
       </button>
-      <div class="faq-answer">No. Kolay è una web app: si apre dal browser, su qualsiasi dispositivo. Da iPhone: apri Safari, vai sull'app e premi "Aggiungi a schermata Home". Si comporta come un'app nativa, senza passare dall'App Store.</div>
+      <div class="faq-answer">No. Kolay è una web app: si apre dal browser, su qualsiasi dispositivo, senza passare dall'App Store o dal Play Store.<br><br>
+<strong>Su iPhone (Safari):</strong> apri l'app, premi il tasto Condividi (□↑) e poi "Aggiungi a schermata Home". Si comporta come un'app nativa, a schermo intero.<br><br>
+<strong>Su Android (Chrome):</strong> apri l'app, premi i tre puntini in alto a destra e poi "Aggiungi a schermata Home" o "Installa app". Da quel momento si apre come un'app normale.</div>
     </div>
 
     <div class="faq-item">
@@ -74,14 +80,6 @@
         <span class="faq-icon">+</span>
       </button>
       <div class="faq-answer">Duolingo è pensato per farti tornare ogni giorno con punti, streak e notifiche. Kolay è pensato per farti imparare davvero: percorso strutturato per livelli (A1→B1), grammatica integrata nelle lezioni, ripetizione spaziata seria. Nessun gamification vuoto.</div>
-    </div>
-
-    <div class="faq-item">
-      <button class="faq-question" onclick="toggleFaq(this)">
-        Posso usarla su iPhone?
-        <span class="faq-icon">+</span>
-      </button>
-      <div class="faq-answer">Sì. Aprila da Safari, premi il tasto Condividi e poi "Aggiungi a schermata Home". Da quel momento si apre come un'app normale, a schermo intero, senza la barra del browser.</div>
     </div>
 
     <div class="faq-item">
@@ -103,6 +101,30 @@
   </div>
 </div>
 
+<div style="background:var(--card2);border-top:1px solid var(--border);padding:56px 5%">
+  <div style="max-width:520px;margin:0 auto">
+    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Hai una domanda?</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Scrivici. Leggiamo tutto e rispondiamo direttamente via email.</p>
+
+    <form id="faqContactForm" action="https://formspree.io/f/xpqgbaeq" method="POST">
+      <div class="form-group">
+        <label for="faq-message">La tua domanda *</label>
+        <textarea id="faq-message" name="message" rows="4" placeholder="Scrivi qui la tua domanda..." required></textarea>
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label for="faq-email">La tua email * <span style="color:var(--muted);font-weight:400">(ti risponderemo qui)</span></label>
+        <input type="email" id="faq-email" name="email" placeholder="tua@email.com" required>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;text-align:center">Invia domanda →</button>
+    </form>
+
+    <div id="faqContactSuccess" style="display:none;text-align:center;padding:24px 0">
+      <h3 style="color:var(--accent);margin-bottom:8px">Grazie!</h3>
+      <p style="color:var(--muted)">La tua domanda è stata inviata. Ti risponderemo via email.</p>
+    </div>
+  </div>
+</div>
+
 <footer class="footer">
   <span class="footer-logo">Kolay</span>
   <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="termini.html">Termini di servizio</a></div>
@@ -117,6 +139,21 @@
     document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
     if (!isOpen) item.classList.add('open');
   }
+  document.getElementById('faqContactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('faqContactSuccess').style.display = 'block';
+      } else {
+        alert('Qualcosa è andato storto. Riprova.');
+      }
+    } catch(err) {
+      alert('Errore di connessione. Riprova tra poco.');
+    }
+  });
 </script>
 </body>
 </html>
