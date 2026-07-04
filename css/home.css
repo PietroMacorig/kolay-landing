@@ -164,6 +164,55 @@
 .cta-band h2 { color: #fff; }
 .cta-band p  { color: rgba(255,255,255,0.80); font-size: 1.05rem; max-width: 480px; }
 
+/* === FEEDBACK SECTION === */
+.feedback-section {
+  background: var(--card2);
+  border-top: 1px solid var(--border);
+}
+
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feedback-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feedback-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.feedback-form textarea,
+.feedback-form input[type="email"] {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text);
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  width: 100%;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.feedback-form textarea:focus,
+.feedback-form input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.feedback-form textarea::placeholder,
+.feedback-form input[type="email"]::placeholder {
+  color: var(--muted);
+}
+
 /* === MOBILE HOME === */
 @media (max-width: 768px) {
   .hero {
