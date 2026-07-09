@@ -3,191 +3,347 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="L'unica app italiana per imparare le lingue con un percorso strutturato davvero. Lezioni per livello, flashcard SRS, grammatica e AI.">
-  <title>Kolay — Impara le lingue, finalmente chiaro</title>
+  <meta name="description" content="La prima app italiana con un percorso strutturato A1, A2, B1. Niente giochini, niente punti. Solo una lingua.">
+  <title>Kolay | Impara le lingue, finalmente chiaro</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
   <link rel="icon" href="assets/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/home.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="index.html" class="nav-logo">Kolay</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="lingue.html">Lingue</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="registrati.html">Registrati</a></li>
-  </ul>
-  <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-primary nav-cta" target="_blank">Vai all'app →</a>
-  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/icon.svg" alt="Kolay">
+      Kolay
+    </a>
+    <ul class="nav-links">
+      <li><a href="lingue.html">Lingue</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-primary nav-cta" target="_blank">
+      Inizia gratis
+    </a>
+    <button class="nav-toggle" onclick="toggleNav()" aria-label="Apri menu">
+      <i class="ph ph-list" id="navIcon"></i>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="lingue.html">Lingue</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-primary" target="_blank">Inizia gratis</a>
+  </div>
 </nav>
-
-<!-- MOBILE NAV DRAWER -->
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a>
-  <a href="lingue.html">Lingue</a>
-  <a href="pricing.html">Pricing</a>
-  <a href="faq.html">FAQ</a>
-  <a href="registrati.html">Registrati</a>
-  <a href="https://kolay-ochre.vercel.app?signup=true" target="_blank" style="color:var(--accent);font-weight:700">Vai all'app →</a>
-</div>
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-inner">
+
+  <!-- Testo sx -->
   <div class="hero-text">
-    <h1 class="hero-title">Kolay.<br>Facile.</h1>
-    <p class="hero-subtitle">La prima app italiana per imparare le lingue con un percorso strutturato davvero.</p>
-    <div class="hero-ctas">
-      <a href="registrati.html" class="btn btn-primary">Registrati gratis →</a>
-      <a href="https://kolay-ochre.vercel.app?signup=true" class="hero-link-secondary" target="_blank">o vai direttamente all'app →</a>
+    <p class="section-label">App per imparare le lingue</p>
+    <h1 class="hero-headline">
+      Kolay.<br><span>Facile.</span>
+    </h1>
+    <p class="hero-subtitle">
+      La prima app italiana con un percorso strutturato A1, A2, B1.
+      Niente giochini, niente punti inutili. Solo una lingua.
+    </p>
+    <div class="hero-actions">
+      <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-primary" target="_blank">
+        Inizia gratis <i class="ph ph-arrow-right"></i>
+      </a>
+      <a href="#features" class="btn btn-ghost">Scopri come funziona</a>
     </div>
+    <p class="hero-micro">
+      <i class="ph ph-gift"></i> Gratuita adesso. Iscriviti prima che arrivi il piano Pro.
+    </p>
   </div>
 
-  <div class="hero-phone">
-    <div class="iphone">
-      <div class="iphone-notch"></div>
-      <div class="iphone-screen">
-        <img src="assets/screenshot.png" alt="Screenshot app Kolay">
+  <!-- Cluster dispositivi dx -->
+  <div class="hero-devices">
+
+    <!-- Laptop — sfondo -->
+    <div class="device device-laptop">
+      <div class="laptop-frame">
+        <div class="laptop-screen">
+          <img src="assets/screen_desktop_2.png" alt="Kolay su desktop">
+        </div>
+      </div>
+      <div class="laptop-base"></div>
+    </div>
+
+    <!-- Telefono esterno sinistro -->
+    <div class="device device-outer-l">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_scrittura.png" alt="Scrittura AI">
+        </div>
+      </div>
+    </div>
+
+    <!-- Telefono interno sinistro -->
+    <div class="device device-inner-l">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_flashcard.png" alt="Flashcard">
+        </div>
+      </div>
+    </div>
+
+    <!-- Telefono centrale (principale) -->
+    <div class="device device-center-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screenshot.png" alt="App Kolay">
+        </div>
+      </div>
+    </div>
+
+    <!-- Telefono interno destro -->
+    <div class="device device-inner-r">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_lezione.png" alt="Lezioni">
+        </div>
+      </div>
+    </div>
+
+    <!-- Telefono esterno destro -->
+    <div class="device device-outer-r">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_grammatica.png" alt="Grammatica">
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div><!-- /hero-inner -->
+</section>
+
+<!-- FEATURE 1: Lezioni -->
+<section class="feature-row" id="features">
+  <div class="feature-row-inner">
+    <div class="feature-row-content">
+      <p class="section-label">Lezioni</p>
+      <h2 class="feature-row-title">Un percorso chiaro dal primo giorno</h2>
+      <p class="feature-row-body">
+        Ogni livello (A1, A2, B1) diviso in unità tematiche con esercizi interattivi.
+        Sai sempre dove sei e cosa ti aspetta.
+      </p>
+      <div class="feature-row-tags">
+        <span class="tag"><i class="ph ph-check"></i> 126+ lezioni per lingua</span>
+        <span class="tag"><i class="ph ph-check"></i> A1, A2, B1</span>
+        <span class="tag"><i class="ph ph-check"></i> Esercizi interattivi</span>
+      </div>
+    </div>
+    <div class="feature-row-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_lezione.png" alt="Lezione Kolay">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="features">
-  <div class="section">
-    <h2 class="section-title">Tutto quello che ti serve, in un posto solo</h2>
-    <p class="section-subtitle">Niente giochini, niente punti inutili. Solo un percorso chiaro per imparare davvero.</p>
-
-    <div class="features-grid">
-
-      <!-- Featured card -->
-      <div class="feat-card-hero">
-        <div class="feat-icon">📚</div>
-        <div>
-          <h3>Lezioni strutturate per livelli e unità</h3>
-          <p>Sai sempre dove sei, cosa hai imparato e cosa ti aspetta. Ogni livello (A1, A2, B1) è diviso in unità con obiettivi chiari. Nessuna confusione, nessun salto nel vuoto. Solo un percorso lineare che funziona davvero, a differenza delle app che ti fanno fare punti senza capire nulla.</p>
+<!-- FEATURE 2: Flashcard -->
+<section class="feature-row feature-row-alt">
+  <div class="feature-row-inner">
+    <div class="feature-row-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_flashcard.png" alt="Flashcard Kolay">
         </div>
       </div>
+    </div>
+    <div class="feature-row-content">
+      <p class="section-label">Flashcard</p>
+      <h2 class="feature-row-title">Ricorda le parole per sempre</h2>
+      <p class="feature-row-body">
+        Il sistema SM-2 calcola quando stai per dimenticare ogni vocabolo e te lo ripropone al momento giusto.
+        Più vai avanti, meno devi studiare.
+      </p>
+      <div class="feature-row-tags">
+        <span class="tag"><i class="ph ph-check"></i> 1800+ vocaboli per lingua</span>
+        <span class="tag"><i class="ph ph-check"></i> Ripetizione spaziata SM-2</span>
+        <span class="tag"><i class="ph ph-check"></i> Adattivo</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <!-- 2x2 grid -->
-      <div class="feat-card">
-        <div class="feat-icon">🃏</div>
-        <div>
-          <h3>Flashcard con ripetizione spaziata</h3>
-          <p>Il sistema decide quando ripassare ogni parola. Tu studi, lui ottimizza i tempi. Zero sprechi, massima ritenzione.</p>
+<!-- FEATURE 3: Grammatica -->
+<section class="feature-row">
+  <div class="feature-row-inner">
+    <div class="feature-row-content">
+      <p class="section-label">Grammatica</p>
+      <h2 class="feature-row-title">La spiegazione giusta, quando ti serve</h2>
+      <p class="feature-row-body">
+        Ogni lezione collegata alla grammatica corrispondente. Un tap e trovi la spiegazione completa
+        con tabelle ed esempi, in italiano, senza ambiguità.
+      </p>
+      <div class="feature-row-tags">
+        <span class="tag"><i class="ph ph-check"></i> Collegata alle lezioni</span>
+        <span class="tag"><i class="ph ph-check"></i> Tabelle ed esempi</span>
+        <span class="tag"><i class="ph ph-check"></i> Vista compatta per il ripasso</span>
+      </div>
+    </div>
+    <div class="feature-row-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_grammatica.png" alt="Grammatica Kolay">
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="feat-card">
-        <div class="feat-icon">📖</div>
-        <div>
-          <h3>Grammatica sempre a portata</h3>
-          <p>Ogni lezione è collegata alle regole grammaticali. Un tap e trovi la spiegazione completa, senza cercare su Google.</p>
+<!-- FEATURE 4: Lettura -->
+<section class="feature-row feature-row-alt">
+  <div class="feature-row-inner">
+    <div class="feature-row-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_lettura.png" alt="Testi di lettura Kolay">
         </div>
       </div>
+    </div>
+    <div class="feature-row-content">
+      <p class="section-label">Lettura</p>
+      <h2 class="feature-row-title">Leggi in lingua, capisci in italiano</h2>
+      <p class="feature-row-body">
+        Dialoghi reali calibrati sul tuo livello.
+        Tap su qualsiasi frase per vedere la traduzione e approfondire il vocabolario nel contesto.
+      </p>
+      <div class="feature-row-tags">
+        <span class="tag"><i class="ph ph-check"></i> Dialoghi reali</span>
+        <span class="tag"><i class="ph ph-check"></i> A1, A2, B1</span>
+        <span class="tag"><i class="ph ph-check"></i> Tap per tradurre</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="feat-card">
-        <div class="feat-icon">📰</div>
-        <div>
-          <h3>Testi di lettura</h3>
-          <p>Dialoghi reali calibrati sul tuo livello. Tap su qualsiasi frase per vedere la traduzione italiana.</p>
+<!-- FEATURE 5: Scrittura AI -->
+<section class="feature-row">
+  <div class="feature-row-inner">
+    <div class="feature-row-content">
+      <p class="section-label">Tutor AI</p>
+      <h2 class="feature-row-title">Metti in pratica quello che impari</h2>
+      <p class="feature-row-body">
+        Scegli uno scenario: al bar, con un amico, con un familiare, con un collega.
+        Scrivi liberamente e il tutor AI corregge ogni errore spiegando il perché in italiano.
+      </p>
+      <div class="feature-row-tags">
+        <span class="tag"><i class="ph ph-check"></i> 5 scenari reali</span>
+        <span class="tag"><i class="ph ph-check"></i> Correzioni in italiano</span>
+        <span class="tag"><i class="ph ph-check"></i> Adattato al tuo livello</span>
+      </div>
+    </div>
+    <div class="feature-row-phone">
+      <div class="phone-frame phone-sm">
+        <div class="phone-screen">
+          <div class="phone-island"></div>
+          <img src="assets/screen_scrittura.png" alt="Scrittura AI Kolay">
         </div>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="feat-card">
-        <div class="feat-icon">✍️</div>
-        <div>
-          <h3>Scrittura con AI</h3>
-          <p>Scrivi frasi libere nella lingua che stai imparando. L'AI le corregge e spiega ogni errore in italiano.</p>
-        </div>
+<!-- LINGUE -->
+<section class="languages">
+  <div class="section-wrap" style="text-align:center">
+    <p class="section-label">Lingue disponibili</p>
+    <h2 class="section-heading">Due lingue, lo stesso metodo.</h2>
+    <p class="section-body" style="margin:0 auto">
+      Lo stesso percorso strutturato, gli stessi strumenti, disponibili per il turco e per l'inglese.
+      La prima app italiana con un curriculum A1, A2, B1 completo per entrambe le lingue.
+    </p>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <div class="lang-flag"><span class="fi fi-tr fis"></span></div>
+      <div class="lang-info">
+        <h3>Turco</h3>
+        <p>Curriculum A1, A2, B1 completo con 126+ lezioni, 1800+ vocaboli e grammatica integrata.</p>
+        <span class="lang-badge available"><i class="ph ph-check-circle"></i> Disponibile</span>
       </div>
-
+    </div>
+    <div class="lang-card">
+      <div class="lang-flag"><span class="fi fi-gb fis"></span></div>
+      <div class="lang-info">
+        <h3>Inglese</h3>
+        <p>Curriculum A1, A2, B1 completo con 141 lezioni, 1800+ vocaboli e grammatica integrata.</p>
+        <span class="lang-badge available"><i class="ph ph-check-circle"></i> Disponibile</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CTA BAND -->
 <section class="cta-band">
-  <h2>Registrati gratis, inizia oggi.</h2>
-  <p>Kolay è gratuita adesso. Chi si registra oggi riceverà vantaggi esclusivi quando l'app diventerà a pagamento.</p>
-  <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-white" target="_blank">Crea il tuo account →</a>
-</section>
-
-<!-- FEEDBACK -->
-<section class="feedback-section">
-  <div class="section" style="max-width:640px">
-    <h2 class="section-title" style="text-align:center">Aiutaci a migliorare</h2>
-    <p class="section-subtitle" style="text-align:center;margin-bottom:36px">Kolay è un'app nuova e cresce grazie ai feedback della community. Ogni messaggio viene letto e preso in considerazione.</p>
-
-    <form
-      class="feedback-form"
-      id="feedbackForm"
-      action="https://formspree.io/f/xzdlkeqb"
-      method="POST"
-    >
-      <div class="form-group">
-        <label for="feedback">Il tuo feedback *</label>
-        <textarea id="feedback" name="feedback" rows="4" placeholder="Cosa pensi di Kolay? Cosa miglioreresti? Cosa ti è piaciuto di più?" required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="feedback-email">Email <span style="color:var(--muted);font-weight:400">(opzionale — se vuoi una risposta)</span></label>
-        <input type="email" id="feedback-email" name="email" placeholder="tua@email.com">
-      </div>
-
-      <button type="submit" class="btn btn-primary" style="width:100%;text-align:center">Invia feedback →</button>
-    </form>
-
-    <div class="form-success" id="feedbackSuccess" style="display:none;text-align:center;padding:32px 0">
-      <h3 style="color:var(--accent);margin-bottom:8px">Grazie!</h3>
-      <p>Il tuo feedback è stato inviato. Lo leggiamo davvero.</p>
-    </div>
-  </div>
+  <h2>Kolay è gratuita adesso.</h2>
+  <p>
+    Ogni giorno che aspetti è un giorno senza imparare.
+    Iscriviti prima che arrivi il piano Pro e tieniti il tuo posto da early adopter.
+  </p>
+  <a href="https://kolay-ochre.vercel.app?signup=true" class="btn btn-white" target="_blank">
+    Crea il tuo account <i class="ph ph-arrow-right"></i>
+  </a>
 </section>
 
 <!-- FOOTER -->
 <footer class="footer">
-  <span class="footer-logo">Kolay</span>
-  <div class="footer-links">
-    <a href="privacy.html">Privacy Policy</a>
-    <a href="termini.html">Termini di servizio</a>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/icon.svg" alt="Kolay" style="width:24px;height:24px;filter:brightness(0) invert(1)">
+      Kolay
+    </div>
+    <div class="footer-links">
+      <a href="lingue.html">Lingue</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="termini.html">Termini</a>
+    </div>
   </div>
-  <span class="footer-copy">© 2026 Kolay — Fatto con cura da Pietro Macorig</span>
+  <div class="footer-inner">
+    <p class="footer-copy">2026 Kolay di Pietro Macorig. Tutti i diritti riservati.</p>
+  </div>
 </footer>
 
 <script>
   function toggleNav() {
-    document.getElementById('navDrawer').classList.toggle('open');
+    const drawer = document.getElementById('navMobile');
+    const icon = document.getElementById('navIcon');
+    const isOpen = drawer.classList.toggle('open');
+    icon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
   }
-
-  document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const form = this;
-    const data = new FormData(form);
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        form.style.display = 'none';
-        document.getElementById('feedbackSuccess').style.display = 'block';
-      } else {
-        alert('Qualcosa è andato storto. Riprova o scrivici a pimacorig@gmail.com');
-      }
-    } catch(err) {
-      alert('Errore di connessione. Riprova tra poco.');
-    }
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
+    });
   });
 </script>
 
