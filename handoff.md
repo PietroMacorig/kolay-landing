@@ -170,7 +170,24 @@ Il Vercel CLI non era autenticato, quindi il deploy **non è stato eseguito**. I
 
 #### Pendente 📋
 1. **Dominio `kolay.it`** — ancora da acquistare
-2. **Altre pagine in v2** — lingue, pricing, faq, registrati ancora in v1 (chat dedicata futura)
+2. **Altre pagine in v2** — lingue, pricing, faq, registrati ancora in stile v1 (redesign completo, chat futura)
+3. **`[EMAIL]` placeholder** — 4 occorrenze in privacy.html e termini.html
+4. **Resend SMTP** — dopo dominio
+
+---
+
+## Sessione 2026-07-09 (sessione 61) — Allineamento contenuti pagine secondarie
+
+#### Completato ✅
+- **lingue.html**: inglese da "In arrivo — 2026" (badge arancio) a "Disponibile ora" (badge verde), testo e CTA aggiornati ("Inizia con l'inglese →").
+- **faq.html**: risposta "Quando arriveranno altre lingue?" aggiornata — turco e inglese già disponibili, link a lingue.html per suggerire lingue future.
+- **pricing.html**: fix accenti "Unita" → "Unità" (3 occorrenze nella tabella).
+- **registrati.html**: hero subtitle aggiornato ("scegli se imparare il turco o l'inglese"), fix "Hai gia" → "Hai già".
+- Commit `5cb72e7` pushato su `kolay-landing`.
+
+#### Pendente 📋
+1. **Dominio `kolay.it`** — ancora da acquistare
+2. **Redesign completo pagine secondarie** (lingue, pricing, faq, registrati) in stile v2 — chat dedicata futura
 3. **`[EMAIL]` placeholder** — 4 occorrenze in privacy.html e termini.html
 4. **Resend SMTP** — dopo dominio
 
