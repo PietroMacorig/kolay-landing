@@ -1,4 +1,21 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/index.html", "destination": "/it/", "permanent": true },
+    { "source": "/lingue", "destination": "/it/lingue", "permanent": true },
+    { "source": "/lingue.html", "destination": "/it/lingue", "permanent": true },
+    { "source": "/pricing", "destination": "/it/pricing", "permanent": true },
+    { "source": "/pricing.html", "destination": "/it/pricing", "permanent": true },
+    { "source": "/faq", "destination": "/it/faq", "permanent": true },
+    { "source": "/faq.html", "destination": "/it/faq", "permanent": true },
+    { "source": "/registrati", "destination": "/it/", "permanent": true },
+    { "source": "/registrati.html", "destination": "/it/", "permanent": true },
+    { "source": "/it/registrati", "destination": "/it/", "permanent": true },
+    { "source": "/it/registrati.html", "destination": "/it/", "permanent": true },
+    { "source": "/privacy", "destination": "/it/privacy", "permanent": true },
+    { "source": "/privacy.html", "destination": "/it/privacy", "permanent": true },
+    { "source": "/termini", "destination": "/it/termini", "permanent": true },
+    { "source": "/termini.html", "destination": "/it/termini", "permanent": true }
+  ]
 }

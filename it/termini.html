@@ -4,29 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Termini di Servizio — Kolay</title>
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
 </head>
 <body>
 
 <nav class="nav">
-  <a href="index.html" class="nav-logo">K &nbsp;Kolay</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="lingue.html">Lingue</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="registrati.html">Registrati</a></li>
-  </ul>
-  <a href="https://kolay-ochre.vercel.app" class="btn btn-primary nav-cta" target="_blank">Vai all'app →</a>
-  <button class="nav-hamburger" onclick="toggleNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/icon.svg" alt="Kolay">
+      <span class="lk"><span class="lk-learn">Learn</span><span class="lk-kolay">Kolay</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="lingue.html">Lingue</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <span class="lang-switch-opt active">IT</span>
+          <span class="lang-switch-opt disabled" title="Presto disponibile">EN</span>
+        </div>
+        <a href="https://app.learnkolay.com?signup=true" class="nav-cta" target="_blank">Vai all'app</a>
+      </div>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Apri menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="lingue.html">Lingue</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <div class="lang-switch lang-switch-mobile">
+      <span class="lang-switch-opt active">IT</span>
+      <span class="lang-switch-opt disabled" title="Presto disponibile">EN</span>
+    </div>
+    <a href="https://app.learnkolay.com?signup=true" class="nav-cta" target="_blank">Vai all'app</a>
+  </div>
 </nav>
-<div class="nav-drawer" id="navDrawer">
-  <a href="index.html">Home</a><a href="lingue.html">Lingue</a>
-  <a href="pricing.html">Pricing</a><a href="faq.html">FAQ</a>
-  <a href="registrati.html">Registrati</a>
-  <a href="https://kolay-ochre.vercel.app" target="_blank" style="color:var(--accent);font-weight:700">Vai all'app →</a>
-</div>
 
 <div class="page-hero">
   <h1>Termini di Servizio</h1>
@@ -86,13 +105,19 @@
 </div>
 
 <footer class="footer">
-  <span class="footer-logo">Kolay</span>
+  <span class="lk lk-on-dark"><span class="lk-learn">Learn</span><span class="lk-kolay">Kolay</span></span>
   <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="termini.html">Termini di servizio</a></div>
   <span class="footer-copy">© 2026 Kolay — Fatto con cura da Pietro Macorig</span>
 </footer>
 
 <script>
-  function toggleNav() { document.getElementById('navDrawer').classList.toggle('open'); }
+  function toggleNav() {
+    const drawer = document.getElementById('navMobile');
+    const btn = document.querySelector('.nav-toggle');
+    const isOpen = drawer.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
 </script>
 </body>
 </html>

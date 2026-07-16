@@ -313,3 +313,29 @@ Il Vercel CLI non era autenticato, quindi il deploy **non è stato eseguito**. I
 - Hosting: landing rimane su Vercel (non su OVH shared hosting del padre — OVH non supporta Node.js, utile solo per HTML statico)
 - App rimane su Vercel free finché non ci sono utenti paganti; al primo revenue → Vercel Pro ($20/mese)
 - Monetizzare su OVH + app su Vercel non bypassa i ToS Vercel (guardano l'app, non dove vanno i pagamenti)
+
+---
+
+## Sessione 2026-07-16 (sessione 87) — Redesign hero homepage: laptop + telefono (stile realistico)
+
+Pietro aveva fatto rifare a un'altra chat Claude il visual del box dispositivi (`PROJECTS/Kolay/device-mockup.html`, tenuto come reference, mai modificato) e voleva portarlo nella homepage live, restando nello spazio hero attuale. Discusso anche (non implementato) l'obiettivo di preparare in futuro `learnkolay.com/it` e `/en` con rilevamento lingua browser — rimandato a quando il sito IT sarà definitivo, come deciso esplicitamente da Pietro.
+
+#### Completato ✅
+- **Hero `index.html`/`css/style.css`**: sostituito il vecchio cluster a 5 telefoni (`.device-outer-l/r`, `.device-inner-l/r`, `.device-center-phone`, `.device-laptop`) con una struttura nuova (classi `.mockup-*`) copiata il più fedelmente possibile dai valori pixel di `device-mockup.html`: bezel realistico (notch a pillola, home indicator, tasti volume/power laterali), scalata con un unico `transform:scale()` su un canvas 1080×720 invece di ricalcolare ogni valore a mano.
+- **Composizione finale** (dopo diverse iterazioni con Pietro): non più 5 telefoni ma **laptop (`screen_desktop_3.png`) + 1 solo telefono (`screen_flashcard.png`)** appoggiato sul lato sinistro del laptop (~30% coperto dietro il bordo, stesso principio di sovrapposizione già usato in passato).
+- **Dimensioni finali**: `.mockup-stage` scale `0.75`, `.mockup-stage-wrap` 810×540px, `.hero-devices` height 540px — dopo vari tentativi (0.6→0.72→0.936→0.75) per bilanciare "abbastanza grande" senza schiacciare il testo o uscire dalla viewport.
+- **Bug reale trovato e risolto**: `.hero-devices` era stato cambiato da `position:relative` (originale, figli tutti `position:absolute` quindi a larghezza-zero per la grid) a `display:flex` con un figlio (`mockup-stage-wrap`) a larghezza fissa normale-flow — questo forzava la colonna grid a espandersi oltre la sua quota `fr`, schiacciando il testo a sinistra. Diagnosticato confrontando `git diff` coi valori originali di `.hero-inner` (`grid-template-columns: 5fr 6fr`, `min-height:520px`, mai cambiati altrove). Fix strutturale: `.hero-devices` tornato `position:relative`, `.mockup-stage-wrap` reso `position:absolute` — non può più ripetersi anche a device più grandi in futuro.
+- **Rimossi** i due div-ombra decorativi (`.mockup-shadow-ground`, `.mockup-shadow-laptop`) che creavano un alone scuro visibile oltre il bordo destro della pagina.
+- **Rimosso `overflow:hidden`** da `.hero-devices` (aggiunto e poi tolto su richiesta esplicita di Pietro — il clip naturale lo fa già `.hero` padre).
+- `.hero-inner` (`max-width:1200px`, `grid-template-columns:5fr 6fr`, `gap:64px`, `min-height:520px`) confermato identico all'originale live — nessuna modifica netta a fine sessione.
+- Tablet/mobile: breakpoint aggiornati di conseguenza (stage scalato ulteriormente su tablet, singolo telefono ingrandito standalone su mobile).
+
+#### Pendente 📋
+1. **Conferma visiva finale da Pietro** — l'ultima modifica (rimozione ombre + `overflow:hidden`) non è ancora stata confermata a video prima dell'handoff.
+2. **Architettura `/it` `/en`** — discussa ma non implementata: quando il sito italiano sarà definitivo, spostare le pagine dentro `learnkolay.com/it/` e aggiungere `/en/`, con redirect automatico da root in base a `navigator.language` (it→`/it`, tutto il resto→`/en`).
+3. **Dominio**: la voce storica "comprare `kolay.it`" in questo file è superata — `learnkolay.com` è stato comprato e collegato (vedi `PROJECTS/Kolay/andare_public/`, sessioni 84-85 del progetto App). Restano comunque aperti da lì: `[EMAIL]` placeholder in `privacy.html`/`termini.html`, Resend SMTP.
+4. Redesign pagine secondarie (lingue, pricing, faq, registrati) in stile v2 — non ancora fatto, resta da sessione dedicata futura.
+
+#### Decisioni prese
+- `device-mockup.html` resta intoccato come reference visiva — ogni modifica va fatta solo su `index.html`/`css/style.css`, mai su quel file.
+- Sequenza esplicita di Pietro: prima perfezionare il sito italiano, poi tradurre in inglese — l'architettura multilingua è solo pianificata, non implementata ora.

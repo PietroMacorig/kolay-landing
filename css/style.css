@@ -77,83 +77,15 @@ body {
 .btn-white:hover { background: var(--cream); }
 
 /* ============================================================
-   NAVIGATION
+   NAVIGATION — ora in css/nav.css, condivisa da tutte le pagine
    ============================================================ */
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: var(--cream);
-  border-bottom: 1px solid var(--silver);
-}
-.nav-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 32px;
-  height: 64px;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 32px;
-}
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 20px;
-  color: var(--ink);
-  flex-shrink: 0;
-}
-.nav-logo img { width: 28px; height: 28px; }
-.nav-links {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
-.nav-links a {
-  font-size: 15px;
-  font-weight: 500;
-  color: var(--ink);
-  transition: color .15s;
-}
-.nav-links a:hover { color: var(--red); }
-.nav-cta { flex-shrink: 0; }
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  color: var(--ink);
-}
-.nav-toggle i { font-size: 24px; }
-.nav-mobile {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 24px 20px;
-  border-top: 1px solid var(--silver);
-  background: var(--cream);
-}
-.nav-mobile.open { display: flex; }
-.nav-mobile a {
-  padding: 10px 4px;
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--ink);
-  border-bottom: 1px solid var(--silver);
-}
-.nav-mobile a:last-child { border-bottom: none; }
-.nav-mobile .btn-primary { margin-top: 8px; justify-content: center; }
 
 /* ============================================================
    HERO — split: testo sx, cluster dispositivi dx
    ============================================================ */
 .hero {
   background: var(--cream);
-  padding: 72px 48px 0;
+  padding: 72px 48px 64px;
   overflow: hidden;
 }
 .hero-inner {
@@ -163,7 +95,6 @@ body {
   grid-template-columns: 5fr 6fr;
   align-items: center;
   gap: 64px;
-  min-height: 520px;
 }
 
 /* Testo sx */
@@ -201,84 +132,166 @@ body {
 }
 .hero-micro i { color: var(--red); font-size: 15px; }
 
-/* ---- Cluster dispositivi (colonna dx) ---- */
+/* ---- Cluster dispositivi (colonna dx) ----
+   Struttura e valori copiati 1:1 da device-mockup.html (canvas 1080x720),
+   scalati con transform invece di ricalcolare a mano ogni pixel — così
+   il bezel/notch/tasti restano identici alla reference. */
 .hero-devices {
   position: relative;
-  height: 480px;
-  overflow: visible;
+  height: 340px;
 }
-.device { position: absolute; }
-
-/* Laptop — sfondo dietro tutti i telefoni */
-.device-laptop {
-  left: 50%;
+.mockup-stage-wrap {
+  position: absolute;
+  left: 0;
   top: 0;
-  transform: translateX(-50%);
-  width: 490px;
-  z-index: 2;
-  opacity: 0.88;
+  width: 810px;
+  height: 340px;
 }
-.laptop-frame {
-  background: #1D1D1F;
-  border-radius: 10px 10px 0 0;
-  padding: 8px 8px 0;
-  box-shadow: 0 24px 64px rgba(26,26,26,0.28);
+.mockup-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 720px;
+  isolation: isolate;
+  transform: scale(0.75);
+  transform-origin: top left;
 }
-.laptop-screen {
-  border-radius: 5px;
+
+/* Ombra a terra morbida sotto laptop+telefono — solo blur ambientale,
+   nessun bordo netto. Contenuta da overflow:hidden su .hero, non può
+   più sbordare oltre il viewport come la vecchia versione rimossa. */
+.mockup-shadow-ground {
+  position: absolute;
+  left: 130px;
+  top: 415px;
+  width: 740px;
+  height: 56px;
+  background: radial-gradient(ellipse at center, rgba(26,26,26,0.16) 0%, rgba(26,26,26,0.07) 50%, transparent 75%);
+  filter: blur(4px);
+  z-index: 0;
+}
+
+/* Laptop — spostato 70px a sinistra nel canvas 1080px per non far
+   tagliare il bordo destro dal viewport (canvas/wrap invariati) */
+.mockup-laptop { position: absolute; left: 203px; top: 10px; z-index: 2; }
+.mockup-laptop-frame {
+  width: 660px;
+  background: #1d1d1f;
+  border-radius: 12px 12px 3px 3px;
+  padding: 10px 10px 7px;
+  box-sizing: border-box;
+}
+.mockup-laptop-cam {
+  width: 7px;
+  height: 7px;
+  background: #444;
+  border-radius: 50%;
+  margin: 0 auto 4px;
+}
+.mockup-laptop-screen {
+  width: 640px;
+  height: 372px;
+  background: #111;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.mockup-laptop-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.mockup-laptop-bar1 {
+  width: 673px;
+  height: 13px;
+  margin-left: -7px;
+  background: linear-gradient(to bottom, #2d2d2f, #1a1a1c);
+  border-radius: 0 0 3px 3px;
+  box-sizing: border-box;
+}
+.mockup-laptop-base {
+  width: 695px;
+  height: 9px;
+  margin-left: -18px;
+  background: #2a2a2c;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+  box-sizing: border-box;
+}
+
+/* Telefono appoggiato sul lato sinistro del laptop (30% coperto) */
+.mockup-pos-lean-phone { position: absolute; left: 78px; top: 50px; z-index: 5; }
+
+/* Bezel telefono — condiviso, dimensioni via modificatori --outer/--inner/--center */
+.mockup-phone {
+  position: relative;
+  box-sizing: border-box;
+  background: #1c1c1e;
+  box-shadow:
+    inset 0 0 0 1.5px #3e3e40,
+    0 0 0 1px #0a0a0a,
+    0 22px 50px rgba(0,0,0,0.48),
+    0 6px 16px rgba(0,0,0,0.22);
+}
+.mockup-phone-screen {
+  position: absolute;
   overflow: hidden;
   background: #000;
-  line-height: 0;
 }
-.laptop-screen img { width: 100%; display: block; }
-.laptop-base {
-  height: 16px;
-  background: #2C2C2E;
-  border-top: 2px solid #3C3C3E;
-  border-radius: 0 0 5px 5px;
-  margin: 0 -8px;
+.mockup-phone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
 }
-
-/* Telefono centrale — primo piano */
-.device-center-phone {
-  bottom: 0;
+.mockup-phone-notch {
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  width: 175px;
+  background: #000;
+  border-radius: 100px;
   z-index: 10;
 }
-
-/*
-  Inner phones: 158px, 70% visibile (110px), 30% nascosto (48px) dietro centrale
-  centro half = 87.5px
-  inner-L left = 50% - 87.5 - 110 = 50% - 197.5 ≈ 50% - 198px
-  inner-R left = 50% + 87.5 - 48 = 50% + 39.5 ≈ 50% + 40px
-*/
-.device-inner-l,
-.device-inner-r {
-  bottom: 0;
-  width: 158px;
-  z-index: 8;
+.mockup-phone-home {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255,255,255,0.38);
+  border-radius: 100px;
+  z-index: 10;
 }
-.device-inner-l { left: calc(50% - 198px); }
-.device-inner-r { left: calc(50% + 40px); }
+.mockup-phone-btn { position: absolute; background: #2a2a2c; }
+.mockup-phone-btn-r { border-radius: 0 2px 2px 0; }
+.mockup-phone-btn-l { border-radius: 2px 0 0 2px; }
 
-/*
-  Outer phones: 140px, 70% visibile (98px), 30% nascosto (42px) dietro inner
-  outer-L: inner-L-left + 42 = 50% - 156 → left = 50% - 156 - 140 = 50% - 296px
-  outer-R: inner-R-right - 42 = 50%+40+158-42 = 50% + 156px
-*/
-.device-outer-l,
-.device-outer-r {
-  bottom: 0;
-  width: 140px;
-  z-index: 6;
-}
-.device-outer-l { left: calc(50% - 296px); }
-.device-outer-r { left: calc(50% + 156px); }
+/* Variante inner (178x386) — telefono appoggiato sul laptop */
+.mockup-phone--inner { width: 178px; height: 386px; border-radius: 20px; }
+.mockup-phone--inner .mockup-phone-screen { top: 4px; left: 4px; width: 170px; height: 378px; border-radius: 16px; }
+.mockup-phone--inner .mockup-phone-notch { top: 5px; width: 50px; height: 12px; }
+.mockup-phone--inner .mockup-phone-home { bottom: 5px; width: 59px; height: 3px; }
+.mockup-phone--inner .mockup-phone-btn-r { right: -3px; top: 108px; width: 3px; height: 42px; }
+.mockup-phone--inner .mockup-phone-btn-l1 { left: -3px; top: 68px; width: 3px; height: 15px; }
+.mockup-phone--inner .mockup-phone-btn-l2 { left: -3px; top: 95px; width: 3px; height: 29px; }
+.mockup-phone--inner .mockup-phone-btn-l3 { left: -3px; top: 130px; width: 3px; height: 29px; }
 
-/* Phone frames */
+/* Variante center (205x444) — solo telefono standalone su mobile */
+.mockup-phone--center { width: 205px; height: 444px; border-radius: 24px; }
+.mockup-phone--center .mockup-phone-screen { top: 5px; left: 5px; width: 195px; height: 434px; border-radius: 19px; }
+.mockup-phone--center .mockup-phone-notch { top: 5px; width: 57px; height: 13px; }
+.mockup-phone--center .mockup-phone-home { bottom: 6px; width: 68px; height: 3px; }
+.mockup-phone--center .mockup-phone-btn-r { right: -4px; top: 124px; width: 4px; height: 49px; }
+.mockup-phone--center .mockup-phone-btn-l1 { left: -4px; top: 78px; width: 4px; height: 17px; }
+.mockup-phone--center .mockup-phone-btn-l2 { left: -4px; top: 109px; width: 4px; height: 33px; }
+.mockup-phone--center .mockup-phone-btn-l3 { left: -4px; top: 150px; width: 4px; height: 33px; }
+
+/* Telefono singolo per mobile (nessuno stage, nessuna scala) */
+.mockup-mobile-phone { display: none; }
+
+/* Phone frames — variante usata nelle feature rows più sotto (invariata) */
 .phone-frame {
+  position: relative;
   background: #111;
   border-radius: 50px;
   padding: 12px;
@@ -310,7 +323,7 @@ body {
   border-radius: 40px;
 }
 
-/* Variante piccola — tutti i telefoni dell'hero e le feature rows */
+/* Variante piccola — feature rows */
 .phone-sm {
   border-radius: 40px;
   padding: 9px;
@@ -421,38 +434,39 @@ body {
 .lang-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 760px;
-  margin: 48px auto 0;
+  gap: 28px;
+  max-width: 900px;
+  margin: 56px auto 0;
 }
 .lang-card {
   background: var(--white);
   border-radius: var(--r-card);
-  padding: 32px;
+  padding: 36px;
   box-shadow: var(--shadow-card);
+}
+.lang-card-top {
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 22px;
 }
-.lang-flag { flex-shrink: 0; }
 .lang-flag .fi {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   display: block;
   box-shadow: 0 0 0 1px rgba(0,0,0,0.08);
 }
-.lang-info h3 {
-  font-size: 20px;
+.lang-card h3 {
+  font-size: 26px;
   font-weight: 700;
   color: var(--ink);
-  margin-bottom: 6px;
+  margin-bottom: 16px;
 }
-.lang-info p {
-  font-size: 14px;
-  color: var(--smoke);
-  margin-bottom: 12px;
-  line-height: 1.5;
+.lang-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 .lang-badge {
   display: inline-flex;
@@ -462,6 +476,7 @@ body {
   border-radius: var(--r-full);
   font-size: 12px;
   font-weight: 600;
+  flex-shrink: 0;
 }
 .lang-badge.available { background: #E8FFEE; color: #1A8C3A; }
 
@@ -532,32 +547,19 @@ body {
    RESPONSIVE — TABLET (< 1024px): stack hero a colonna singola
    ============================================================ */
 @media (max-width: 1023px) {
-  .hero { padding: 64px 32px 0; }
+  .hero { padding: 64px 32px 56px; }
   .hero-inner {
     grid-template-columns: 1fr;
-    min-height: auto;
     gap: 48px;
   }
   .hero-text { text-align: center; }
   .hero-actions { justify-content: center; }
   .hero-micro { justify-content: center; }
 
-  .hero-devices {
-    height: 400px;
-    max-width: 580px;
-    margin: 0 auto;
-  }
-
-  /* Tablet: solo 3 telefoni (nascondi outer) */
-  .device-outer-l,
-  .device-outer-r { display: none; }
-
-  /* Ricalcola inner per container 580px (50% = 290px) */
-  /* center: 175px half=87.5; inner 150px, 70%=105px nascosto=45px */
-  .device-inner-l { left: calc(50% - 193px); width: 150px; }
-  .device-inner-r { left: calc(50% + 43px); width: 150px; }
-
-  .device-laptop { width: 420px; }
+  /* Tablet: stage intero rimpicciolito (stesso identico markup, solo scala) */
+  .hero-devices { height: 190px; }
+  .mockup-stage-wrap { left: 50%; transform: translateX(-50%); width: 454px; height: 190px; }
+  .mockup-stage { transform: scale(0.42); }
 
   .feature-row-inner { gap: 52px; }
   .feature-row-phone { width: min(40%, 240px); }
@@ -573,28 +575,19 @@ body {
   .nav-toggle { display: flex; justify-self: end; }
 
   /* Hero */
-  .hero { padding: 56px 20px 0; }
+  .hero { padding: 56px 20px 48px; }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 40px;
-    min-height: auto;
   }
   .hero-text { text-align: center; }
   .hero-actions { justify-content: center; }
   .hero-micro { justify-content: center; font-size: 13px; }
 
-  /* Mobile: solo telefono centrale */
-  .hero-devices { height: 380px; max-width: 100%; }
-  .device-outer-l,
-  .device-outer-r,
-  .device-inner-l,
-  .device-inner-r,
-  .device-laptop { display: none; }
-  .device-center-phone {
-    width: 180px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+  /* Mobile: nascondi lo stage intero, mostra solo il telefono centrale ingrandito */
+  .hero-devices { height: 444px; }
+  .mockup-stage-wrap { display: none; }
+  .mockup-mobile-phone { display: flex; justify-content: center; }
 
   /* Feature rows */
   .feature-row { padding: 64px 20px; }
@@ -613,7 +606,6 @@ body {
   /* Languages */
   .languages { padding: 64px 20px; }
   .lang-grid { grid-template-columns: 1fr; max-width: 100%; margin-top: 32px; }
-  .lang-card { flex-direction: column; align-items: flex-start; gap: 12px; }
 
   /* CTA */
   .cta-band { padding: 72px 20px; }

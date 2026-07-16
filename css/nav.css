@@ -1,0 +1,169 @@
+/* ============================================================
+   NAV — componente condiviso da TUTTE le pagine (home + secondarie).
+   Valori espliciti (non dipende da --font/--ink di style.css o
+   --font-sans/--text di base.css) così resta identico ovunque,
+   anche caricato da pagine con design token diversi.
+   ============================================================ */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #FFF8F2;
+  border-bottom: 1px solid #D8D0C8;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 64px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Wordmark "Learn Kolay" — stesso stile dei social (Learn neutro, Kolay rosso) */
+.lk {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 5px;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+}
+.lk-learn { color: #1A1A1A; }
+.lk-kolay { color: #E8431A; }
+.lk.lk-on-dark .lk-learn { color: #FFFFFF; }
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.nav-logo img { width: 28px; height: 28px; }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a { text-decoration: none; }
+.nav-links a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #1A1A1A;
+  transition: color .15s;
+}
+.nav-links a:hover { color: #E8431A; }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Switch lingua — pillola, stesso linguaggio visivo delle tag/badge del sito */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  background: #FFF0E6;
+  border-radius: 100px;
+  padding: 3px;
+  gap: 2px;
+  flex-shrink: 0;
+}
+.lang-switch-opt {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 5px 11px;
+  border-radius: 100px;
+  color: #6B6B6B;
+  transition: background .15s, color .15s;
+}
+.lang-switch-opt.active { background: #E8431A; color: #FFFFFF; }
+.lang-switch-opt.disabled { opacity: .5; cursor: not-allowed; }
+
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 100px;
+  background: #E8431A;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 22px;
+  transition: background .18s;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: #CF3A14; }
+
+/* Hamburger — 3 barre CSS pure, nessuna dipendenza da icon font
+   (così funziona identico sulle pagine che non caricano Phosphor) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #1A1A1A;
+  border-radius: 2px;
+  transition: transform .25s, opacity .2s;
+}
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.nav-mobile {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 24px 24px;
+  border-top: 1px solid #D8D0C8;
+  background: #FFF8F2;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile a:not(.nav-cta) {
+  padding: 10px 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #1A1A1A;
+  border-bottom: 1px solid #D8D0C8;
+}
+.nav-mobile .lang-switch-mobile {
+  margin: 14px 4px;
+  align-self: flex-start;
+  border-bottom: none;
+}
+.nav-mobile .nav-cta {
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+@media (max-width: 679px) {
+  .nav-inner { padding: 0 20px; }
+  .nav-links, .nav-actions { display: none; }
+  .nav-toggle { display: flex; }
+}
