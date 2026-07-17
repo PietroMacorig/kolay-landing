@@ -433,9 +433,9 @@ body {
 }
 .lang-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 28px;
-  max-width: 900px;
+  max-width: 1080px;
   margin: 56px auto 0;
 }
 .lang-card {
@@ -443,6 +443,8 @@ body {
   border-radius: var(--r-card);
   padding: 36px;
   box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
 }
 .lang-card-top {
   display: flex;
@@ -479,6 +481,21 @@ body {
   flex-shrink: 0;
 }
 .lang-badge.available { background: #E8FFEE; color: #1A8C3A; }
+.lang-badge.coming { background: var(--cream-alt); color: var(--smoke); border: 1px solid var(--silver); }
+
+.lang-card.coming .lang-flag .fi,
+.lang-card.coming h3 { opacity: 0.75; }
+.lang-card-notify {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--red);
+}
+.lang-card-notify i { font-size: 14px; }
 
 /* ============================================================
    CTA BAND
@@ -563,6 +580,8 @@ body {
 
   .feature-row-inner { gap: 52px; }
   .feature-row-phone { width: min(40%, 240px); }
+
+  .lang-grid { grid-template-columns: repeat(2, 1fr); max-width: 700px; }
 }
 
 /* ============================================================

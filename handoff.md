@@ -5,7 +5,7 @@ _Creato: 2026-07-02 (sessione 36)_
 
 ## Cos'è
 Sito marketing separato dall'app Kolay. Progetto Vercel indipendente in `PROJECTS/Kolay/landing/`.
-HTML/CSS puro, 5 pagine. L'app resta su `kolay-ochre.vercel.app`.
+HTML/CSS puro. Dal 17/07 struttura multilingua: pagine italiane in `it/` (index, lingue, pricing, faq, privacy, termini), `en/` creata ma vuota (in attesa di traduzione), root serve solo un redirect verso `/it/` + il `404.html` condiviso. `css/nav.css` è il componente nav condiviso da tutte le pagine. L'app è raggiungibile su `app.learnkolay.com` (non più `kolay-ochre.vercel.app` nei link della landing, anche se il progetto Vercel sottostante è lo stesso).
 
 **Spec:** `docs/superpowers/specs/2026-07-02-kolay-landing-design.md`
 **Piano:** `docs/superpowers/plans/2026-07-02-kolay-landing.md`
@@ -331,11 +331,91 @@ Pietro aveva fatto rifare a un'altra chat Claude il visual del box dispositivi (
 - Tablet/mobile: breakpoint aggiornati di conseguenza (stage scalato ulteriormente su tablet, singolo telefono ingrandito standalone su mobile).
 
 #### Pendente 📋
-1. **Conferma visiva finale da Pietro** — l'ultima modifica (rimozione ombre + `overflow:hidden`) non è ancora stata confermata a video prima dell'handoff.
-2. **Architettura `/it` `/en`** — discussa ma non implementata: quando il sito italiano sarà definitivo, spostare le pagine dentro `learnkolay.com/it/` e aggiungere `/en/`, con redirect automatico da root in base a `navigator.language` (it→`/it`, tutto il resto→`/en`).
+1. ~~Conferma visiva finale da Pietro~~ ✅ confermata a inizio sessione 88 (17/07)
+2. ~~Architettura `/it` `/en`~~ ✅ implementata sessione 88 (17/07) — vedi sotto
 3. **Dominio**: la voce storica "comprare `kolay.it`" in questo file è superata — `learnkolay.com` è stato comprato e collegato (vedi `PROJECTS/Kolay/andare_public/`, sessioni 84-85 del progetto App). Restano comunque aperti da lì: `[EMAIL]` placeholder in `privacy.html`/`termini.html`, Resend SMTP.
 4. Redesign pagine secondarie (lingue, pricing, faq, registrati) in stile v2 — non ancora fatto, resta da sessione dedicata futura.
 
 #### Decisioni prese
 - `device-mockup.html` resta intoccato come reference visiva — ogni modifica va fatta solo su `index.html`/`css/style.css`, mai su quel file.
 - Sequenza esplicita di Pietro: prima perfezionare il sito italiano, poi tradurre in inglese — l'architettura multilingua è solo pianificata, non implementata ora.
+
+---
+
+## Sessione 2026-07-17 (sessione 88) — Split /it + /en, fix hero, copy, nav unificata, dominio app
+
+Continuazione diretta della sessione 87 (hero confermato a video da Pietro a inizio sessione). Obiettivo: sistemare il sito prima di tradurlo in inglese — struttura cartelle, poi contenuti pagina italiana, poi nav.
+
+#### Completato ✅
+
+**Struttura `/it` + `/en`**
+- Tutte le 7 pagine spostate in `it/` con `git mv` (storia preservata): `index`, `lingue`, `pricing`, `faq`, `privacy`, `termini` + `registrati` (poi ritirata, vedi sotto). `en/` creata vuota con `.gitkeep`.
+- `css/`, `assets/`, `404.html` restano condivisi in root.
+- Nuova `index.html` in root: redirect (meta refresh + JS) verso `/it/` — hardcoded per ora dato che `/en/` non esiste ancora, un solo punto da cambiare quando si attiva il rilevamento lingua vero.
+- `vercel.json`: redirect 301 dai vecchi path piatti (`/pricing.html`, `/lingue.html`, ecc.) a `/it/...` per non rompere link già condivisi/indicizzati.
+- Verificato dal vivo con `serve` locale + Playwright: path relativi, clean URL, redirect tutti funzionanti.
+
+**Fix hero (bug reale trovato con Playwright)**
+- `.hero-devices`/`.mockup-stage-wrap` erano alti 540px ma il contenuto visibile (laptop+telefono) occupava solo ~327px → 213px di spazio morto prima della sezione "Lezioni". Misurato con `getBoundingClientRect()`, non solo a occhio. Fix: altezza ridotta al contenuto reale (340px desktop, 190px tablet), il respiro sotto l'hero ora è un `padding-bottom` esplicito e prevedibile invece di dipendere dal box sovradimensionato.
+- Aggiunta un'ombra a terra morbida (radial-gradient blur) sotto il cluster dispositivi, contenuta da `overflow:hidden` su `.hero` (non può ripetere il vecchio problema dell'alone che sbordava a destra, tolto in sess.87). **Confermata da Pietro.**
+
+**Sezione "Lingue disponibili"**
+- Card ingrandite, sostituito il paragrafo piatto con le tag pillola già usate nelle feature row (coerenza col resto della pagina).
+- Provati badge colorati A1/A2/B1 (componente "Level Badge" da `design.md`, mai usato prima) — **scartati da Pietro**, tornati a tag testuale neutra "A1, A2, B1".
+
+**Copy hero/CTA/footer**
+- Tolto "italiana" da "la prima app" (claim ora "la prima app", su richiesta esplicita di Pietro — nota: claim più ampio e meno difendibile legalmente di "la prima app italiana", segnalato a Pietro).
+- Rimossa la ripetizione quasi verbatim del claim "prima app" tra hero e sezione Lingue.
+- Ammorbidita la frase da senso di colpa nella CTA band ("ogni giorno che aspetti...") — ora punta su accesso gratuito + status early adopter, senza ripetere l'urgenza già detta nell'hero.
+- Fix ambiguità reale: "Solo una lingua" nell'hero poteva leggersi come "l'app copre una sola lingua" (falso, contraddiceva la sezione Lingue subito sotto) → "Solo te e la lingua che vuoi imparare." (proposta di Pietro).
+- Aggiunto riferimento al Quadro Comune Europeo nella sezione Lingue (non in hero, per non rompere la coerenza con le tag "A1, A2, B1" usate altrove).
+- Footer: aggiunto simbolo ©.
+
+**Nav unificata su tutte le pagine**
+- Le pagine secondarie usavano un sistema di design completamente diverso dall'index (font Lora/Noto Sans invece di Inter, logo solo testo invece di icona+wordmark, layout flex non centrato invece di grid, CTA "Vai all'app →" invece di "Inizia gratis", link "Home"+"Registrati" in più, mobile drawer diverso). Creato `css/nav.css`, componente unico e self-contained (valori espliciti, non dipende dai design token delle due pagine ospitanti) usato da tutte le 7 pagine + `404.html`.
+- Logo diventato wordmark **"Learn Kolay"** (Learn nero/bianco + Kolay rosso, K maiuscola) — stile identico ai post social e al dominio, usato in nav e footer di ogni pagina. Scelto di non toccare l'headline hero "Kolay. Facile." (gioco di parole kolay=facile in turco, si sarebbe perso e avrebbe messo inglese dentro la pagina italiana).
+- Nav ridotta a 3 link (Lingue, Pricing, FAQ) ovunque, tolti "Home" e "Registrati".
+- **`registrati.html` ritirata**: contenuto ridondante con home+pricing (stessi bullet, stesso messaggio early-adopter, styling bespoke fuori dal design system), unico valore reale ("Hai già un account? Accedi") non giustificava una pagina a sé. Redirect 301 aggiunti in `vercel.json`.
+- Aggiunto **switch lingua IT/EN** in nav (pillola, IT attivo/EN disabilitato con tooltip "Presto disponibile" — `/en/` non esiste ancora).
+- Su richiesta di Pietro: tolto il bottone separato "Accedi" (andava alla stessa schermata di "Inizia gratis", solo con tab diverso — l'app ha già il toggle login/signup interno), rinominato il CTA nav unico in **"Vai all'app"**.
+- **Tutti i link `kolay-ochre.vercel.app` sostituiti con `app.learnkolay.com`** (verificato prima che il dominio rispondesse 200 diretto, nessun redirect intermedio) — un utente che clicca ora non vede più il vecchio dominio `.vercel.app` caricarsi per un istante.
+- Bug trovati e risolti durante il lavoro: pallini elenco sui link nav delle pagine secondarie (mancava `list-style:none` in base.css), link nav duplicati/tagliati su mobile (dimenticato di nascondere `.nav-links` sotto 680px), link interni di `404.html` rotti (puntavano a `lingue.html` ecc. in root, ma le pagine si erano spostate in `it/` durante il lavoro sulle cartelle — root-relative `/it/...` ora), un riferimento testuale in FAQ al vecchio CTA "Vai all'app"/dominio vecchio.
+
+**Deploy**
+- Commit `edf4bcd` pushato su `main` — Vercel auto-deploy in corso a fine sessione.
+
+#### Pendente 📋
+1. **Verifica visiva del deploy live** — tutte le modifiche di oggi sono state validate in locale (server statico + Playwright), non ancora controllate su `learnkolay.com` dopo il deploy Vercel.
+2. **Traduzione inglese**: prossimo step esplicito di Pietro — creare le pagine in `en/`, speculari a quelle italiane. Promemoria contenuto già deciso: dalla pagina IT si dice che l'app offre turco+inglese, dalla pagina EN si dirà solo turco; lo svedese sarà annunciato "work in progress, arriva ad agosto 2026" in entrambe.
+3. **Limiti piano Free/Pro da aggiornare** nel sito (pricing.html attuale è disallineato) — discusso a inizio sessione, poi rimandato per concentrarsi su struttura+nav. L'app resta gratis finché non viene integrato Stripe.
+4. Switch lingua nav: oggi è solo un placeholder visivo (EN disabilitato) — va collegato per davvero quando `/en/` esiste.
+5. Redesign pagine secondarie (lingue, pricing, faq) in stile v2 — ancora non fatto.
+6. Resta aperto tutto il pendente del filone "Andare Public" (vedi `PROJECTS/Kolay/andare_public/`).
+
+#### Decisioni prese
+- "La prima app" (non più "italiana") — scelta esplicita di Pietro nonostante il rischio legale maggiore segnalato.
+- "Learn Kolay" come wordmark solo in nav/footer, non nell'headline — mantiene il gioco di parole "Kolay. Facile." intatto.
+- Un solo bottone CTA in nav ("Vai all'app"), niente "Accedi" separato — l'app gestisce già login/signup nella stessa schermata.
+- `app.learnkolay.com` ovunque al posto di `kolay-ochre.vercel.app` nella landing.
+- `registrati.html` ritirata invece di redesignata — non aggiungeva contenuto reale rispetto a home+pricing.
+
+---
+
+## Sessione 2026-07-17 (sessione 89) — Svedese "in arrivo" su lingue.html + copy box suggerimenti
+
+Pietro ha chiesto di valutare copy/design di `lingue.html` e aggiungere lo svedese come lingua "work in progress, in arrivo ad agosto 2026" (coerente con la nota lasciata a fine sess.88). Chiesto esplicitamente **scope ridotto**: solo copy + aggiunta svedese, **senza** portare la pagina al nuovo stile v2 (redesign completo rimandato, resta pendente).
+
+#### Completato ✅
+- **Card Svedese aggiunta** in `it/lingue.html`: badge arancio "In arrivo · Agosto 2026" (classe `.lang-card.coming` + `.badge-orange`, già esistenti in CSS ma mai usate finora), bandiera 🇸🇪, CTA "Avvisami al lancio ↓" che punta al form in fondo pagina (`#langForm`) invece che all'app.
+- **CSS `pages.css`**: `.lang-grid` da 2 a 3 colonne (`repeat(3,1fr)`), nuovo breakpoint 900px per 2 colonne in tablet (prima saltava da 2 a 1 colonna senza stadio intermedio). `.lang-card.coming` da `opacity:0.75` su tutta la card (rendeva il testo poco leggibile) a sfondo `--card2` + opacity solo su flag/nome.
+- **Copy**: meta title/description aggiornati (menzionavano solo il turco). Box suggerimenti in fondo pagina riscritto: prima chiedeva "che lingua vorresti imparare" dando per scontato che la prossima lingua fosse ancora da decidere — ora distingue "avvisami per lo svedese" (già deciso) da "suggerisci la prossima dopo quella". Campo email reso obbligatorio (prima opzionale) e spostato per primo, campo lingua reso opzionale (prima obbligatorio) — la maggior parte di chi userà il form ora vuole solo essere avvisato per lo svedese, non suggerire una lingua nuova.
+- Nessun cambio di sistema di design (font Lora/Noto Sans, `base.css`/`pages.css` invariati nella struttura) — resta disallineato dalla homepage v2, come già notato in sess.88.
+
+#### Non fatto (scope escluso esplicitamente da Pietro)
+- Redesign di `lingue.html` in stile v2 (Inter, flag-icons, card a tag pillola) — resta nel pendente storico "redesign pagine secondarie", non toccato oggi.
+- Pagina inglese `en/lingue.html` non esiste ancora (tutto `en/` è vuoto, traduzione rimandata come da sess.88) — quando verrà creata, andrà annunciato lo svedese anche lì (nota già lasciata in sess.88).
+
+#### Pendente 📋
+1. Deploy: modifiche fatte solo su file locali, non ancora committate/pushate/deployate — verificare con Pietro prima di pushare.
+2. Redesign pagine secondarie (lingue, pricing, faq) in stile v2 — ancora pendente da sessioni precedenti.
+3. Traduzione inglese (`en/`) — quando parte, portare lo svedese "in arrivo" anche lì.

@@ -8,6 +8,10 @@
   <link rel="stylesheet" href="../css/pages.css">
   <link rel="stylesheet" href="../css/nav.css">
   <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -49,7 +53,7 @@
 
 <div class="page-hero">
   <h1>Privacy Policy</h1>
-  <p>Ultimo aggiornamento: 3 luglio 2026</p>
+  <p>Ultimo aggiornamento: 17 luglio 2026</p>
 </div>
 
 <div class="page-body legal-content" style="max-width:720px">
@@ -57,7 +61,7 @@
   <p>La presente informativa descrive come Pietro Macorig ("il Titolare") raccoglie, utilizza e protegge i tuoi dati personali nell'ambito del servizio Kolay, in conformità al Regolamento UE 2016/679 (GDPR) e al D.Lgs. 196/2003 (Codice Privacy italiano).</p>
 
   <h2>1. Titolare del trattamento</h2>
-  <p>Pietro Macorig<br>Email: <strong>[EMAIL]</strong></p>
+  <p>Pietro Macorig<br>Email: <strong>hello@learnkolay.com</strong></p>
 
   <h2>2. Dati raccolti e finalità</h2>
   <table>
@@ -82,7 +86,12 @@
       </tr>
       <tr>
         <td>Testi inviati alla funzione Speaking (AI)</td>
-        <td>Generazione di risposte AI in tempo reale. I testi non vengono conservati permanentemente da Groq oltre l'elaborazione.</td>
+        <td>Il messaggio scritto dall'utente, insieme a un contesto minimo (livello e lezioni già completate, per calibrare la risposta), viene inviato al fornitore AI Groq per generare la risposta del tutor in tempo reale. Non viene inviato altro (non email, non cronologia di altre conversazioni). Groq non utilizza questi dati per addestrare i propri modelli, e non li conserva oltre l'elaborazione salvo log temporanei (max 30 giorni) per sicurezza/affidabilità della piattaforma.</td>
+        <td>Art. 6.1.b GDPR — esecuzione del contratto</td>
+      </tr>
+      <tr>
+        <td>Contatore messaggi AI (numero di messaggi inviati e data dell'ultimo)</td>
+        <td>Applicare i limiti di utilizzo del tutor AI previsti dal piano (Gratuito/Pro) ed evitare abusi del servizio</td>
         <td>Art. 6.1.b GDPR — esecuzione del contratto</td>
       </tr>
       <tr>
@@ -91,9 +100,14 @@
         <td>Art. 6.1.f GDPR — legittimo interesse</td>
       </tr>
       <tr>
-        <td>Email inserita nel form di richiesta accesso (landing page)</td>
-        <td>Gestione della lista d'attesa e invio del link di accesso</td>
-        <td>Art. 6.1.b GDPR — misure precontrattuali</td>
+        <td>Dati di traffico aggregati e anonimi (pagine visitate, paese, tipo di dispositivo e browser, sito di provenienza)</td>
+        <td>Statistiche di utilizzo del sito tramite Vercel Web Analytics, che non usa cookie né identificatori che permettano di risalire al singolo visitatore</td>
+        <td>Art. 6.1.f GDPR — legittimo interesse</td>
+      </tr>
+      <tr>
+        <td>Email e messaggio inseriti nei form della landing page (suggerimento lingua, domanda alla pagina FAQ)</td>
+        <td>Rispondere alla richiesta e, per il form lingue, avvisare l'utente quando la lingua suggerita diventa disponibile</td>
+        <td>Art. 6.1.a GDPR — consenso, inviando volontariamente il form</td>
       </tr>
     </tbody>
   </table>
@@ -103,9 +117,10 @@
   <p>Per fornire il servizio, il Titolare si avvale dei seguenti sub-processori, che trattano dati per suo conto:</p>
   <ul>
     <li><strong>Supabase Inc.</strong> (USA) — autenticazione e database dei progressi. Trasferimento UE→USA mediante Clausole Contrattuali Standard (Art. 46 GDPR).</li>
-    <li><strong>Vercel Inc.</strong> (USA) — hosting dell'applicazione e log tecnici. Clausole Contrattuali Standard (Art. 46 GDPR).</li>
-    <li><strong>Groq Inc.</strong> (USA) — elaborazione AI dei testi inviati alla funzione Speaking. I testi non vengono conservati oltre l'elaborazione. Clausole Contrattuali Standard (Art. 46 GDPR).</li>
-    <li><strong>Formspree Inc.</strong> (USA) — ricezione delle email dal form di richiesta accesso della landing page. Clausole Contrattuali Standard (Art. 46 GDPR).</li>
+    <li><strong>Vercel Inc.</strong> (USA) — hosting dell'applicazione e della landing page, log tecnici, e Vercel Web Analytics (statistiche di traffico aggregate, senza cookie). Clausole Contrattuali Standard (Art. 46 GDPR).</li>
+    <li><strong>Groq Inc.</strong> (USA) — elaborazione AI dei messaggi inviati alla funzione Speaking, per generare la risposta del tutor in tempo reale. Per contratto (Groq Services Agreement), Groq non utilizza questi dati per addestrare i propri modelli e non li conserva oltre l'elaborazione, salvo log temporanei fino a 30 giorni per sicurezza e affidabilità della piattaforma. Clausole Contrattuali Standard (Art. 46 GDPR).</li>
+    <li><strong>Formspree Inc.</strong> (USA) — ricezione delle email inviate tramite i form della landing page (suggerimento lingua, domande FAQ). Clausole Contrattuali Standard (Art. 46 GDPR).</li>
+    <li><strong>OVH SAS</strong> (Francia, UE) — gestione della casella email <strong>hello@learnkolay.com</strong> usata per il supporto agli utenti. Dati trattati interamente nell'Unione Europea, nessun trasferimento extra-UE.</li>
   </ul>
   <p>I dati non vengono ceduti a terzi per finalità proprie.</p>
 
@@ -113,7 +128,9 @@
   <ul>
     <li>Dati account e progressi di studio: conservati finché l'account è attivo. Dopo la cancellazione: eliminati entro 30 giorni.</li>
     <li>Dati tecnici e log: massimo 30 giorni.</li>
-    <li>Email della lista d'attesa: eliminata entro 30 giorni dall'invio del link di accesso, o dopo 90 giorni in assenza di risposta.</li>
+    <li>Contatore messaggi AI: conservato finché l'account è attivo, per applicare i limiti settimanali/giornalieri del piano.</li>
+    <li>Email e messaggi inviati tramite i form della landing page: conservati su Formspree secondo la loro policy di conservazione, cancellabili su richiesta scrivendo a hello@learnkolay.com.</li>
+    <li>Dati di traffico aggregati (Vercel Web Analytics): non essendo riconducibili a un singolo utente, non rientrano nella nozione di dato personale conservato individualmente; la finestra di storico disponibile dipende dal piano Vercel in uso.</li>
   </ul>
 
   <h2>5. Diritti dell'interessato</h2>
@@ -126,7 +143,7 @@
     <li><strong>Portabilità</strong> (Art. 20 GDPR): ricevere i tuoi dati in formato strutturato e leggibile da dispositivo automatico.</li>
     <li><strong>Opposizione</strong> (Art. 21 GDPR): opporti al trattamento basato su legittimo interesse.</li>
   </ul>
-  <p>Per esercitare i tuoi diritti, scrivi a <strong>[EMAIL]</strong>. Risponderemo entro 30 giorni dalla ricezione della richiesta (Art. 12 GDPR).</p>
+  <p>Per esercitare i tuoi diritti, scrivi a <strong>hello@learnkolay.com</strong>. Risponderemo entro 30 giorni dalla ricezione della richiesta (Art. 12 GDPR).</p>
 
   <h2>6. Reclamo al Garante</h2>
   <p>Hai il diritto di proporre reclamo all'autorità di controllo competente:</p>
@@ -136,7 +153,9 @@
   Piazza Venezia 11, 00187 Roma</p>
 
   <h2>7. Cookie</h2>
-  <p>Kolay utilizza esclusivamente <strong>cookie tecnici strettamente necessari</strong> al funzionamento del servizio (gestione della sessione autenticata). Non vengono utilizzati cookie di profilazione, cookie di tracciamento o cookie di terze parti per finalità pubblicitarie. Non è necessario il banner cookie ai sensi della normativa vigente.</p>
+  <p>Kolay utilizza esclusivamente <strong>cookie tecnici strettamente necessari</strong> al funzionamento del servizio (gestione della sessione autenticata). Non vengono utilizzati cookie di profilazione, cookie di tracciamento o cookie di terze parti per finalità pubblicitarie.</p>
+  <p>Le statistiche di traffico della landing page sono raccolte tramite <strong>Vercel Web Analytics</strong>, un servizio che per sua natura non utilizza cookie né alcun identificatore che permetta di riconoscere un visitatore tra una visita e l'altra.</p>
+  <p>Non essendoci cookie non tecnici né strumenti di tracciamento, non è necessario il banner cookie ai sensi della normativa vigente (Direttiva ePrivacy, Provvedimento Garante Privacy sui cookie).</p>
 
   <h2>8. Età minima</h2>
   <p>Il servizio è riservato a utenti di almeno <strong>14 anni</strong>, in conformità all'art. 2-quinquies del D.Lgs. 196/2003. Registrandosi, l'utente dichiara di soddisfare questo requisito. Se il Titolare dovesse venire a conoscenza che dati di minori di 14 anni sono stati raccolti senza il consenso del genitore o tutore, provvederà alla loro immediata eliminazione.</p>
