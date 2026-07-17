@@ -20,6 +20,11 @@
   gap: 24px;
   margin-top: 48px;
 }
+.lang-grid.lang-grid-2col {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 700px;
+  margin: 48px auto 0;
+}
 
 .lang-card {
   background: var(--card);
@@ -361,7 +366,7 @@
 
 /* === MOBILE PAGES === */
 @media (max-width: 768px) {
-  .lang-grid    { grid-template-columns: 1fr; }
+  .lang-grid, .lang-grid.lang-grid-2col    { grid-template-columns: 1fr; max-width: 100%; margin: 32px auto 0; }
   .signup-form  { padding: 24px 20px; }
   .pricing-table { font-size: 0.82rem; }
   .pricing-td-feature,

@@ -438,6 +438,10 @@ body {
   max-width: 1080px;
   margin: 56px auto 0;
 }
+.lang-grid.lang-grid-2col {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 700px;
+}
 .lang-card {
   background: var(--white);
   border-radius: var(--r-card);
@@ -624,7 +628,7 @@ body {
 
   /* Languages */
   .languages { padding: 64px 20px; }
-  .lang-grid { grid-template-columns: 1fr; max-width: 100%; margin-top: 32px; }
+  .lang-grid, .lang-grid.lang-grid-2col { grid-template-columns: 1fr; max-width: 100%; margin-top: 32px; }
 
   /* CTA */
   .cta-band { padding: 72px 20px; }
