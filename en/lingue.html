@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn Turkish with a structured A1-B1 course: lessons, grammar, spaced repetition flashcards and AI writing practice. Swedish coming soon.">
+  <title>Kolay Languages — Learn Turkish, Swedish coming soon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
+  <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <link rel="stylesheet" href="../css/nav.css">
+  <script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="alternate" hreflang="it" href="https://www.learnkolay.com/it/lingue">
+  <link rel="alternate" hreflang="en" href="https://www.learnkolay.com/en/lingue">
+  <link rel="alternate" hreflang="x-default" href="https://www.learnkolay.com/it/lingue">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="../assets/icon.svg" alt="Kolay">
+      <span class="lk"><span class="lk-learn">Learn</span><span class="lk-kolay">Kolay</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="lingue.html">Languages</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="nav-actions">
+        <div class="lang-switch">
+          <a class="lang-switch-opt" href="../it/lingue.html">IT</a>
+          <span class="lang-switch-opt active">EN</span>
+        </div>
+        <a href="https://app.learnkolay.com?signup=true" class="nav-cta" target="_blank">Go to the app</a>
+      </div>
+      <button class="nav-toggle" onclick="toggleNav()" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="lingue.html">Languages</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="faq.html">FAQ</a>
+    <div class="lang-switch lang-switch-mobile">
+      <a class="lang-switch-opt" href="../it/lingue.html">IT</a>
+      <span class="lang-switch-opt active">EN</span>
+    </div>
+    <a href="https://app.learnkolay.com?signup=true" class="nav-cta" target="_blank">Go to the app</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <h1>Available languages</h1>
+  <p>Every language has its own structured path, from A1 up to B1 and beyond. Pick where to start.</p>
+</div>
+
+<div class="page-body" style="max-width:1100px">
+  <div class="lang-grid" style="grid-template-columns:repeat(2,1fr);max-width:700px;margin:48px auto 0">
+
+    <!-- Turkish — available -->
+    <div class="lang-card available">
+      <span class="badge badge-green">Available now</span>
+      <div class="lang-flag"><span class="fi fi-tr fis"></span></div>
+      <div class="lang-name">Turkish</div>
+      <p class="lang-desc">The first app with a structured path to learn Turkish from A1 to B1. Clear lessons, built-in grammar, spaced repetition flashcards and AI writing practice, all designed to get you speaking.</p>
+      <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Start with Turkish →</a>
+    </div>
+
+    <!-- Swedish — coming -->
+    <div class="lang-card coming">
+      <span class="badge badge-orange">Coming · August 2026</span>
+      <div class="lang-flag"><span class="fi fi-se fis"></span></div>
+      <div class="lang-name">Swedish</div>
+      <p class="lang-desc">The next path in the works, built with the same method as Turkish: structured lessons, built-in grammar, spaced repetition flashcards and AI writing practice. Leave your email below to get notified at launch.</p>
+      <a href="#langForm" class="btn btn-outline">Notify me at launch ↓</a>
+    </div>
+
+  </div>
+</div>
+
+<div style="background:var(--card2);border-top:1px solid var(--border);padding:56px 5%">
+  <div style="max-width:520px;margin:0 auto">
+    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Want to be notified or suggest a language?</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Swedish is already in the works. Leave your email to know when it lands, or suggest the next language after that.</p>
+
+    <form id="langForm" action="https://formspree.io/f/mojorazq" method="POST">
+      <div class="form-group">
+        <label for="lang-email">Email *</label>
+        <input type="email" id="lang-email" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="form-group" style="margin-top:12px">
+        <label for="lingua">Language <span style="color:var(--muted);font-weight:400">(optional — leave blank for Swedish)</span></label>
+        <input type="text" id="lingua" name="lingua" placeholder="E.g. Spanish, French, Arabic...">
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;text-align:center">Send →</button>
+    </form>
+
+    <div id="langSuccess" style="display:none;text-align:center;padding:24px 0">
+      <h3 style="color:var(--accent);margin-bottom:8px">Thank you!</h3>
+      <p style="color:var(--muted)">We'll let you know as soon as Swedish is ready.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <span class="lk lk-on-dark"><span class="lk-learn">Learn</span><span class="lk-kolay">Kolay</span></span>
+  <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="termini.html">Terms of Service</a></div>
+  <span class="footer-copy">© 2026 Kolay · Made with care by Pietro Macorig</span>
+</footer>
+
+<script>
+  function toggleNav() {
+    const drawer = document.getElementById('navMobile');
+    const btn = document.querySelector('.nav-toggle');
+    const isOpen = drawer.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  document.getElementById('langForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (res.ok) {
+        form.style.display = 'none';
+        document.getElementById('langSuccess').style.display = 'block';
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    } catch(err) {
+      alert('Connection error. Please try again shortly.');
+    }
+  });
+</script>
+</body>
+</html>

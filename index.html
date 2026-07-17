@@ -6,17 +6,15 @@
 <title>Kolay</title>
 <meta http-equiv="refresh" content="0; url=/it/">
 <script>
-  // Solo /it/ esiste per ora. Quando /en/ sarà pronto, cambiare la destinazione
-  // per navigator.language che non inizia per "it" da '/it/' a '/en/'.
   (function () {
     var lang = (navigator.language || navigator.userLanguage || "it").toLowerCase();
-    var dest = lang.indexOf("it") === 0 ? "/it/" : "/it/";
+    var dest = lang.indexOf("it") === 0 ? "/it/" : "/en/";
     window.location.replace(dest);
   })();
 </script>
 </head>
 <body>
   <noscript><meta http-equiv="refresh" content="0; url=/it/"></noscript>
-  <p>Reindirizzamento a <a href="/it/">Kolay in italiano</a>…</p>
+  <p>Reindirizzamento a <a href="/it/">Kolay in italiano</a> / Redirecting to <a href="/en/">Kolay in English</a>…</p>
 </body>
 </html>
