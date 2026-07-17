@@ -416,6 +416,53 @@ Pietro ha chiesto di valutare copy/design di `lingue.html` e aggiungere lo svede
 - Pagina inglese `en/lingue.html` non esiste ancora (tutto `en/` è vuoto, traduzione rimandata come da sess.88) — quando verrà creata, andrà annunciato lo svedese anche lì (nota già lasciata in sess.88).
 
 #### Pendente 📋
-1. Deploy: modifiche fatte solo su file locali, non ancora committate/pushate/deployate — verificare con Pietro prima di pushare.
+1. ~~Deploy~~ ✅ pushato sess.90.
 2. Redesign pagine secondarie (lingue, pricing, faq) in stile v2 — ancora pendente da sessioni precedenti.
-3. Traduzione inglese (`en/`) — quando parte, portare lo svedese "in arrivo" anche lì.
+3. ~~Traduzione inglese (`en/`)~~ ✅ fatta sess.91-92, vedi sotto.
+
+---
+
+## Sessione 2026-07-17 (sessione 90) — Prezzo Pro reale, FAQ aggiornata, legal + Vercel Analytics
+
+Continuazione diretta di sess.89. Pietro ha confermato i limiti Free/Pro rimasti in sospeso da sess.88 e chiesto di sistemare privacy/termini/analytics prima di passare alla traduzione inglese.
+
+#### Completato ✅
+- **Card Svedese aggiunta anche in `index.html`** (homepage v2): sezione lingue ridotta a 2 card (Turco disponibile + Svedese in arrivo), headline "Un metodo, più lingue." Grid a 2 colonne.
+- **`pricing.html`**: prezzo Pro reale **3,99€/mese o 29,99€/anno (-37%, barrato su 47,88€)**, mostrato nell'header della tabella (CSS già pronto, mai usato). Tabella 5 righe con i limiti futuri decisi in chat: Lezioni/Flashcard sempre sbloccate su entrambi i piani, Testi di lettura e Grammatica solo Pro, AI Speaking 3 msg/giorno Free vs **70 msg/settimana** Pro (non illimitato). Banner riscritto: "hai già accesso a tutte le funzionalità Pro senza costo, finché non attiviamo gli abbonamenti".
+- **`faq.html`**: domanda "È davvero gratuita?" → "Quanto costa?" con risposta allineata a pricing.html + link. Nuova FAQ sui limiti AI (perché 3/giorno Free vs 70/settimana Pro). Risposta lingue future aggiornata con lo svedese.
+- **`privacy.html`/`termini.html`**: placeholder `[EMAIL]` (4 totali) sostituiti con `hello@learnkolay.com` (mailbox attivata dopo ticket OVH). Tolta la frase falsa "accesso su invito" (il signup è pubblico da sess.45). Tabella dati aggiornata (contatore messaggi AI, i 2 form Formspree reali invece della vecchia waitlist). Aggiunti Vercel Analytics e OVH come sub-processori. **Verificata la documentazione ufficiale Groq** (Services Agreement + Your Data in GroqCloud, via WebSearch/WebFetch): confermato che Groq non usa i dati per training e non li conserva oltre l'elaborazione salvo log 30gg per abusi/affidabilità — chiudeva un pendente aperto da settimane nel piano `andare_public` §0 punto 5.
+- **Vercel Web Analytics** aggiunto: snippet vanilla JS su tutte e 7 le pagine della landing; sul progetto app (`kolay`, React/Vite) installato `@vercel/analytics` e montato `<Analytics />` in `main.jsx`.
+- **Deciso di non usare Cloudflare Web Analytics** (il piano free sembra vietare uso commerciale) — si resta solo su Vercel Analytics, gratis ora, passa a Web Analytics Pro incluso quando si upgraderà a Vercel Pro (già previsto al primo pagamento, non è un costo aggiuntivo). Dettagli in `andare_public/00_piano_generale.md` Fase 3.
+- Card lingue (Turco/Inglese/Svedese) ingrandite, bottoni ancorati in fondo con `margin-top:auto` invece che subito sotto il testo (le descrizioni di lunghezza diversa creavano card di altezza diversa), bandiere emoji sostituite con flag-icons (su Windows le emoji rendevano come testo "TR"/"EN"/"SE").
+- Tutto pushato e verificato live (incluso un redeploy manuale dell'app per un bug scoperto **non causato da queste modifiche**: un deploy Vercel aveva silenziosamente costruito senza le env var Supabase, bundle rotto — risolto con un redeploy pulito, vedi diagnosi completa in questa sessione).
+
+#### Pendente 📋 (portato avanti)
+1. Redesign pagine secondarie in stile v2 — ancora aperto.
+2. Formspree: cambiare l'email di notifica sui 2 form (`mojorazq`, `xpqgbaeq`) dalla dashboard — azione manuale di Pietro, non ancora fatta.
+3. IMAP locale di backup su `hello@learnkolay.com` — ancora da fare.
+4. Resend SMTP — ancora da fare.
+5. Traduzione inglese `en/` — prossimo step esplicito di Pietro.
+
+---
+
+## Sessione 2026-07-17 (sessione 91-92) — Traduzione inglese completa + 2 bug reali trovati da Pietro
+
+#### Completato ✅
+- **6 pagine `/en/` create** (index, lingue, pricing, faq, privacy, termini) con un **workflow a 7 agenti Sonnet in parallelo** (6 traduttori + 1 verificatore) — piano concordato con Pietro prima di lanciarlo, autonomo fino a fine processo. `index.html`/`lingue.html` EN mostrano solo Turkish (disponibile) + Swedish (coming August 2026), **niente card English** (l'audience la parla già). hreflang reciproci IT/EN/x-default su tutte le coppie. Switch lingua nella nav reso funzionante in entrambe le direzioni (prima l'opzione EN era sempre disabilitata). `privacy.html`/`termini.html` EN tradotte fedelmente senza alterare fatti/citazioni legali.
+- **`404.html`** reso bilingue (rilevamento `navigator.language`, prima era rimasto con lo switch EN disabilitato).
+- **`index.html` root**: il redirect ora manda davvero i visitatori non italiani su `/en/` (prima era hardcoded sempre `/it/`).
+- **Bug 1 (trovato da Pietro)**: su mobile, le pagine a 2 card lingua (index/lingue EN) facevano uscire la seconda card dallo schermo invece di andare sotto, perché uno `style` inline forzava 2 colonne **a qualunque larghezza**, ignorando le media query mobile che invece funzionano correttamente sulle pagine a 3 card. Fix: spostata la regola in una classe `.lang-grid-2col` nei fogli di stile, con le media query aggiornate per includerla.
+- **Bug 2 (trovato da Pietro, il più serio)**: dalla home (IT o EN), cliccare Lingue/Pricing/FAQ/Privacy/Termini o il logo riportava sempre in italiano, anche partendo dall'inglese. Causa: `trailingSlash:false` rende l'URL pulito della home `.../it` o `.../en` **senza slash finale** — i link relativi tipo `href="lingue.html"` su quella pagina si risolvono sostituendo l'ultimo segmento (`it`/`en` viene trattato come un file), quindi scappano fuori dalla cartella lingua e finiscono sui redirect legacy di `vercel.json`, che puntano sempre a `/it/...`. Bug invisibile lato italiano (il redirect ci finiva comunque), rompeva solo la navigazione dalla home inglese. Le altre pagine non erano affette (il loro ultimo segmento URL non è mai `it`/`en`). Fix: link di nav/footer/logo sulla home resi assoluti (`/it/...` o `/en/...`).
+- Tutto verificato live con Playwright (screenshot + `console --errors`) prima e dopo ogni fix, non solo build locale.
+
+#### Non fatto / segnalato ma non risolto
+- **`vercel.json` — redirect legacy sempre fissi a `/it/...`**: `{"source":"/lingue.html","destination":"/it/lingue",...}` e simili non guardano mai la lingua di chi arriva da un link esterno vecchio/condiviso (es. `learnkolay.com/lingue.html`) — vanno sempre in italiano. Proposto a Pietro di renderli lingua-aware, non ancora deciso/fatto.
+- Redesign pagine secondarie in stile v2 — resta il pendente più vecchio, mai affrontato.
+
+#### Pendente 📋
+1. `vercel.json`: valutare se rendere i redirect legacy consapevoli della lingua del browser.
+2. Redesign pagine secondarie (lingue, pricing, faq) in stile v2.
+3. Formspree: cambiare email di notifica (azione manuale Pietro).
+4. IMAP backup + Resend SMTP (azioni manuali Pietro).
+5. Fix età minima 13→14 in `App.jsx` — **ora sbloccato** (i testi legali veri sono stati sistemati in sess.90), prossimo step naturale secondo `00_piano_generale.md` Fase 1.
+6. Tutto il resto del filone "Andare Public" (Fase 0 fiscale, Fase 2 Stripe/paywall) — vedi `andare_public/00_piano_generale.md`.
