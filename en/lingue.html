@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Learn Turkish with a structured A1-B1 course: lessons, grammar, spaced repetition flashcards and AI writing practice. Swedish coming soon.">
-  <title>Kolay Languages — Learn Turkish, Swedish coming soon</title>
+  <meta name="description" content="Learn Turkish or Swedish with a structured A1-B1 course: lessons, grammar, spaced repetition flashcards and AI writing practice.">
+  <title>Kolay Languages — Learn Turkish, Swedish</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
   <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/base.css">
@@ -73,16 +74,24 @@
       <div class="lang-flag"><span class="fi fi-tr fis"></span></div>
       <div class="lang-name">Turkish</div>
       <p class="lang-desc">The first app with a structured path to learn Turkish from A1 to B1. Clear lessons, built-in grammar, spaced repetition flashcards and AI writing practice, all designed to get you speaking.</p>
+      <div class="lang-tags">
+        <span class="lang-tag"><i class="ph ph-check"></i> 175 lessons</span>
+        <span class="lang-tag"><i class="ph ph-check"></i> 1800+ words</span>
+      </div>
       <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Start with Turkish →</a>
     </div>
 
-    <!-- Swedish — coming -->
-    <div class="lang-card coming">
-      <span class="badge badge-orange">Coming · August 2026</span>
+    <!-- Swedish — available -->
+    <div class="lang-card available">
+      <span class="badge badge-green">Available now</span>
       <div class="lang-flag"><span class="fi fi-se fis"></span></div>
       <div class="lang-name">Swedish</div>
-      <p class="lang-desc">The next path in the works, built with the same method as Turkish: structured lessons, built-in grammar, spaced repetition flashcards and AI writing practice. Leave your email below to get notified at launch.</p>
-      <a href="#langForm" class="btn btn-outline">Notify me at launch ↓</a>
+      <p class="lang-desc">A structured path to learn Swedish from A1 to B1, built with the same method as Turkish: clear lessons, built-in grammar, spaced repetition flashcards and AI writing practice.</p>
+      <div class="lang-tags">
+        <span class="lang-tag"><i class="ph ph-check"></i> 193 lessons</span>
+        <span class="lang-tag"><i class="ph ph-check"></i> 2200+ words</span>
+      </div>
+      <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Start with Swedish →</a>
     </div>
 
   </div>
@@ -90,8 +99,8 @@
 
 <div style="background:var(--card2);border-top:1px solid var(--border);padding:56px 5%">
   <div style="max-width:520px;margin:0 auto">
-    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Want to be notified or suggest a language?</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Swedish is already in the works. Leave your email to know when it lands, or suggest the next language after that.</p>
+    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Want to suggest the next language?</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Turkish and Swedish are already available. Leave your email and the language you'd like to see next.</p>
 
     <form id="langForm" action="https://formspree.io/f/mojorazq" method="POST">
       <div class="form-group">
@@ -99,15 +108,15 @@
         <input type="email" id="lang-email" name="email" placeholder="you@email.com" required>
       </div>
       <div class="form-group" style="margin-top:12px">
-        <label for="lingua">Language <span style="color:var(--muted);font-weight:400">(optional — leave blank for Swedish)</span></label>
-        <input type="text" id="lingua" name="lingua" placeholder="E.g. Spanish, French, Arabic...">
+        <label for="lingua">Language</label>
+        <input type="text" id="lingua" name="lingua" placeholder="E.g. Spanish, French, Arabic..." required>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;text-align:center">Send →</button>
     </form>
 
     <div id="langSuccess" style="display:none;text-align:center;padding:24px 0">
       <h3 style="color:var(--accent);margin-bottom:8px">Thank you!</h3>
-      <p style="color:var(--muted)">We'll let you know as soon as Swedish is ready.</p>
+      <p style="color:var(--muted)">We'll take your suggestion into account for the next language.</p>
     </div>
   </div>
 </div>

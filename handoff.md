@@ -464,5 +464,19 @@ Continuazione diretta di sess.89. Pietro ha confermato i limiti Free/Pro rimasti
 2. Redesign pagine secondarie (lingue, pricing, faq) in stile v2.
 3. Formspree: cambiare email di notifica (azione manuale Pietro).
 4. IMAP backup + Resend SMTP (azioni manuali Pietro).
-5. Fix età minima 13→14 in `App.jsx` — **ora sbloccato** (i testi legali veri sono stati sistemati in sess.90), prossimo step naturale secondo `00_piano_generale.md` Fase 1.
-6. Tutto il resto del filone "Andare Public" (Fase 0 fiscale, Fase 2 Stripe/paywall) — vedi `andare_public/00_piano_generale.md`.
+5. ~~Fix età minima 13→14 in `App.jsx`~~ ✅ **Fatto sess.98** (19/07) — vedi `App/handoff.md`.
+6. Tutto il resto del filone "Andare Public" (Fase 0 fiscale) — vedi `andare_public/00_piano_generale.md`.
+
+---
+
+## Sessione 2026-07-21 (sessione 101) — Rimozione claim "gratis ora"/"early adopter" + conteggi lezioni/vocaboli aggiornati
+
+#### Completato ✅
+- **Rimossi i riferimenti a "app gratuita adesso"/"early adopter"** da 8 pagine (IT+EN: `index.html`, `pricing.html`, `faq.html`, `termini.html`), rimasti sul sito da prima che il paywall Stripe/gating Free-Pro fosse implementato in produzione (sess.99). Il sito prometteva ancora una fase pre-pagamento superata. Riscritti per riflettere lo split reale: lezioni/flashcard sempre gratis, Pro sblocca lettura/grammatica/AI. Rimosso anche il banner promozionale in `pricing.html` ("goditi l'app gratis prima che diventi a pagamento"). Commit `43eb2a4`, pushato.
+- **Conteggi lezioni/vocaboli aggiornati** con i numeri reali (contati da `App/public/data/{tr,en,en-tr}/manifest.json` + file unità, non più i vecchi numeri da quando il curriculum era più piccolo): sezione generica "126+"→"135+ lezioni per lingua" (IT+EN); card Turco (sito IT) 139 lezioni/2000+ vocaboli; card Inglese (sito IT) 169 lezioni/2100+ vocaboli; card Turkish (sito EN) 175 lessons/1800+ words (invariato, era già corretto). Commit `268475d`, pushato.
+
+#### Decisioni prese
+- Numeri "secchi" (non arrotondati con "+") dove il sito già usava quello stile per una card lingua specifica; "+" mantenuto solo per il claim generico trasversale ai corsi, che deve restare valido anche se i corsi crescono leggermente.
+
+#### Pendente 📋
+Nessuno di nuovo da questa sessione — vedi lista sopra, invariata.

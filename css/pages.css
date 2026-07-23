@@ -54,6 +54,25 @@
 .lang-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
 .lang-card .btn { margin-top: auto; align-self: stretch; text-align: center; }
 
+.lang-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.lang-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 50px;
+  background: var(--card2);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.lang-tag i { color: var(--accent); font-size: 13px; }
+
 .badge {
   display: inline-block;
   padding: 4px 12px;

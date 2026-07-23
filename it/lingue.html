@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Impara il turco o l'inglese con un percorso strutturato A1-B1: lezioni, grammatica, flashcard e AI. Presto anche lo svedese.">
-  <title>Le lingue di Kolay — Turco, inglese, presto svedese</title>
+  <meta name="description" content="Impara turco, inglese o svedese con un percorso strutturato A1-B1: lezioni, grammatica, flashcard e AI.">
+  <title>Le lingue di Kolay — Turco, Inglese, Svedese</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Noto+Sans:wght@400;500;600;700&display=swap">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@7.2.3/css/flag-icons.min.css">
   <link rel="icon" href="../assets/icon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../css/base.css">
@@ -70,6 +71,10 @@
       <div class="lang-flag"><span class="fi fi-tr fis"></span></div>
       <div class="lang-name">Turco</div>
       <p class="lang-desc">La prima app con un percorso strutturato per imparare il turco dall'A1 al B1. Lezioni chiare, grammatica integrata, flashcard SRS e pratica scritta con AI, tutto pensato per chi parte dall'italiano.</p>
+      <div class="lang-tags">
+        <span class="lang-tag"><i class="ph ph-check"></i> 139 lezioni</span>
+        <span class="lang-tag"><i class="ph ph-check"></i> 2000+ vocaboli</span>
+      </div>
       <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Inizia con il turco →</a>
     </div>
 
@@ -79,16 +84,24 @@
       <div class="lang-flag"><span class="fi fi-gb fis"></span></div>
       <div class="lang-name">Inglese</div>
       <p class="lang-desc">Un percorso strutturato per imparare l'inglese dall'A1 al B1. Lezioni chiare, grammatica integrata, flashcard SRS e pratica scritta con AI, pensato per chi parte dall'italiano.</p>
+      <div class="lang-tags">
+        <span class="lang-tag"><i class="ph ph-check"></i> 169 lezioni</span>
+        <span class="lang-tag"><i class="ph ph-check"></i> 2100+ vocaboli</span>
+      </div>
       <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Inizia con l'inglese →</a>
     </div>
 
-    <!-- Svedese — in arrivo -->
-    <div class="lang-card coming">
-      <span class="badge badge-orange">In arrivo · Agosto 2026</span>
+    <!-- Svedese — disponibile -->
+    <div class="lang-card available">
+      <span class="badge badge-green">Disponibile ora</span>
       <div class="lang-flag"><span class="fi fi-se fis"></span></div>
       <div class="lang-name">Svedese</div>
-      <p class="lang-desc">Il prossimo percorso in lavorazione, con lo stesso metodo di turco e inglese: lezioni strutturate, grammatica integrata, flashcard SRS e pratica scritta con AI. Lascia la tua email qui sotto per essere avvisato al lancio.</p>
-      <a href="#langForm" class="btn btn-outline">Avvisami al lancio ↓</a>
+      <p class="lang-desc">Un percorso strutturato per imparare lo svedese dall'A1 al B1, con lo stesso metodo di turco e inglese: lezioni chiare, grammatica integrata, flashcard SRS e pratica scritta con AI.</p>
+      <div class="lang-tags">
+        <span class="lang-tag"><i class="ph ph-check"></i> 192 lezioni</span>
+        <span class="lang-tag"><i class="ph ph-check"></i> 2200+ vocaboli</span>
+      </div>
+      <a href="https://app.learnkolay.com?signup=true" class="btn btn-primary" target="_blank">Inizia con lo svedese →</a>
     </div>
 
   </div>
@@ -96,8 +109,8 @@
 
 <div style="background:var(--card2);border-top:1px solid var(--border);padding:56px 5%">
   <div style="max-width:520px;margin:0 auto">
-    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Vuoi essere avvisato o suggerire una lingua?</h2>
-    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Lo svedese è già in lavorazione. Lasciaci la tua email per sapere quando arriva, o suggerisci la prossima lingua dopo quella.</p>
+    <h2 style="text-align:center;font-size:1.45rem;margin-bottom:10px">Vuoi suggerire la prossima lingua?</h2>
+    <p style="text-align:center;color:var(--muted);margin-bottom:28px">Turco, inglese e svedese sono già disponibili. Lasciaci la tua email e la lingua che vorresti vedere dopo.</p>
 
     <form id="langForm" action="https://formspree.io/f/mojorazq" method="POST">
       <div class="form-group">
@@ -105,15 +118,15 @@
         <input type="email" id="lang-email" name="email" placeholder="tua@email.com" required>
       </div>
       <div class="form-group" style="margin-top:12px">
-        <label for="lingua">Lingua <span style="color:var(--muted);font-weight:400">(opzionale — lascia vuoto per lo svedese)</span></label>
-        <input type="text" id="lingua" name="lingua" placeholder="Es. Spagnolo, Francese, Arabo...">
+        <label for="lingua">Lingua</label>
+        <input type="text" id="lingua" name="lingua" placeholder="Es. Spagnolo, Francese, Arabo..." required>
       </div>
       <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;text-align:center">Invia →</button>
     </form>
 
     <div id="langSuccess" style="display:none;text-align:center;padding:24px 0">
       <h3 style="color:var(--accent);margin-bottom:8px">Grazie!</h3>
-      <p style="color:var(--muted)">Ti avviseremo appena lo svedese è pronto.</p>
+      <p style="color:var(--muted)">Terremo conto del tuo suggerimento per la prossima lingua.</p>
     </div>
   </div>
 </div>
